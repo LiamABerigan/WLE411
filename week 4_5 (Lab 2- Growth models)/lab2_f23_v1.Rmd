@@ -1,0 +1,576 @@
+---
+title: "Lab 2 - Projecting Population Growth Using Exponential and Logistic Growth Models"
+author: "Erik Blomberg (edited by Matt Mensinger and Liam Berigan)"
+date: "`r format(Sys.time(), '%m/%d/%Y')`"
+header-includes:
+  - \usepackage{setspace}\onehalfspacing
+  - \setlength\parindent{12pt}
+  - \usepackage{indentfirst}
+  - \usepackage{float}
+fontsize: 12pt
+urlcolor: blue
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    toc: yes
+    df_print: paged
+    number_sections: yes
+    
+---
+```{r setup, include=FALSE}
+library(officedown)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-200 {
+  max-height: 200px;
+  max-width: 100%;
+  overflow-x: auto
+  overflow-y: auto;
+  background-color: inherit;
+}
+```
+
+```{r echo=FALSE, include=FALSE}
+#install.packages("RMark")
+library(RMark)
+#install.packages("bookdown")
+library(bookdown)
+library(ggplot2)
+#install.packages('curl')
+library(curl)
+#install.packages("kableExtra")
+library(kableExtra)
+
+cleanup(ask=FALSE)
+```
+
+# Lab Overview
+
+In this lab we will use Microsoft Excel to reconstruct a number of the population growth models that we’ve covered in the WLE 410 lecture over the last few weeks.  We will continue to use functions in Microsoft Excel to construct formulas based on mathematical models.  You've been exposed to most of the Excel features you'll need to use in past courses, but I will try my best to jog your memory as we go along.  As with last week, we will finish the lab with an exercise based in RStudio that will incorporate stochasticity into a population time series, but for the initial components you can plan to use Excel.  
+
+## Learning objectives
+
+1) Allow you to apply the exponential and logistic growth models in a computing context.
+
+2) Gain a better understanding of stochastic processes and effects on population projections.
+
+3) Continue to increase your comfort level implementing mathematical models as formula in Excel and R.  
+
+# Getting Started
+
+Before you begin, you'll want to  retrieve the file “growth.xls” from Brightspace, which you'll find in the Lab 2 content.  Save it to a folder on your computer, which you may want to title "Lab 2" or something similar.  When you open the file in Excel you will see there are 3 worksheets labeled “Exponential”, “Logistic”, and “Stochasticity”.  We will be working through them in that order.
+
+# Lab Part 1 - Exponential Growth
+
+## Model system - invasive nutria
+
+In this exercise we’ll be working with both the continuous and discrete models for projections of exponential population growth.  We’ll be using hypothetical population parameters designed to mimic the true demographics of nutria (*Myocastor coypus*), which are a loose relative of beavers (Castor spp.) that are native to South and Central America and have been introduced to portions of the U.S. Nutria have relatively high annual mortality, but produce up to three litters of 2-11 young per year, so their reproductive potential is very high. They may become sexually mature as early as 6 months of age, and in reality they commonly have their first offspring at 8-9 months. For simplicity in this lab, we’ll assume they don’t reproduce until 1 year of age. Nutria are a relatively destructive invasive species that can dramatically impact native wetland ecosystems, and so understanding their population growth rates are important for management and conservation. 
+
+![**Nutria - Photo Source: Wikimedia Commons**](Nutria.jpg)
+
+## Exponential growth review
+
+First, some basic review on exponential growth.  You should recall from lecture that the equation for a **continuous** projection of the exponential growth model is given as:
+
+\begin{equation}
+  \label{eq:1}
+  N_{t}=N_{0}e^{rt}
+\end{equation}
+
+and the **discrete** equivalent is given as:
+
+\begin{equation}
+  \label{eq:2}
+  N_{t+1}=N_{t}\lambda 
+\end{equation}
+
+Also recall that we can estimate the **instantaneous rate of increase**, *r*, as 
+
+\begin{equation}
+  \label{eq:3}
+  r=(b-d) 
+\end{equation}
+
+and that $\lambda$, or the **geometric growth rate**, can be estimated as:
+
+\begin{equation}
+  \label{eq:4}
+  \lambda=e^r
+\end{equation}
+
+Also recall that we can estimate lambda directly from counts of animals as:
+
+\begin{equation}
+  \label{eq:5}
+  \lambda=\frac{N_{t+1}}{N_{t}}
+\end{equation}
+
+Which is really just a rearrangement of **_equation textcolor{red}{\ref{eq:2}}_**. We can also compute the total, or **cumulative**, rate of population change across any number of *t* occasions as: 
+
+\begin{equation}
+  \label{eq:6}
+  \lambda_{t}=\frac{N_{t}}{N_{0}}
+\end{equation}
+
+Or, if we know the annual lambda, we can compute the cumulative lambda ($\lambda_t$) as:
+
+\begin{equation}
+  \label{eq:7}
+  \lambda_t=(\lambda)^t
+\end{equation}
+
+Alternatively, if we’ve got a series of independent $\lambda$s, we can compute ($\lambda_t$) as:
+
+\begin{equation}
+  \label{eq:8}
+  \lambda_t=\lambda_1 * \lambda_2 * \lambda_3 * ... \lambda_t
+\end{equation}
+
+Finally, if we know ($\lambda_t$) we can calculate the mean annual rate of change as:
+
+\begin{equation}
+  \label{eq:9}
+  \lambda=\sqrt[t]{\lambda_t}=(\lambda_t)^{1/t}
+\end{equation}
+
+You'll use these equations throughout the day today as you project the exponential growth of nutria populations.
+
+## Part 1 exercise
+
+1.	Begin in the first sheet, labeled “Exponential”.  In cells B1:B3 (the color-coded cells), I’ve given you three starting values for initial population size, birth rate, and death rate, for a population of nutrias.  We’ll assume these animals were newly introduced to an area of forested coastal wetland in the southeastern U.S. Using the values I’ve provided, place an equation in cell B4 that computes the instantaneous rate of increase, r.  You will use this to answer question #1 for the assignment.
+
+2.	Using your calculated value for r, in cell B6 write the continuous exponential equation that estimates the population size in year 1 based on the starting value of 10 individuals.  This equation should look like this:
+
+=\$B\$1\*exp(\$B\$4\*A6)
+
+2. (cont) Once you’ve typed it in, make sure you see the connection between this formula and equation 1 above. For most of the rest of the lab, I'll expect you to translate the equations into the formulas yourself.  
+
+3.	Now, let’s project this equation forward in time.  In the above equation, notice that the “\$” values “anchor” either the row (\$B), column (\$1), or both (\$B\$1), which allows us to drag the equation downward and estimate abundance (*N*) at each time step, while the formula continues to reference cells B4 (*r*) and B1 ($N_{0}$), but the reference for A6 (time) is allowed to change.  Do this by grabbing the small black square in the lower right corner and dragging downward to year 10, which generates an estimate of *N* for each year. Use this to answer question #2. 
+
+4.	Next, compute an estimate of geometric population growth rate ($\lambda$) by typing a formula in cell E1 that represents _equation \ref{eq:4}_ above.  Recall that the Excel function “=exp()” is the equivalent of the “e” term used in _equation \ref{eq:4}_.  Use this value to answer question #3.
+
+5.	Now let’s estimate discrete population growth using our estimate of lambda and _equation \ref{eq:2}_ above.  Start with cell D6, and project the discrete population size for 10 years. Doing this will require you to think carefully about how your value for *N* needs to change for each year of the projection in order to fit the math contained in _equation \ref{eq:2}_, and how you need to adjust your formula accordingly.  Use this to answer question #4.
+
+6.	Now we’ll consider a new scenario where the local Fish and Wildlife Department realized that nutrias were present shortly after their introduction to the wetland, and acted quickly to implement management to control the expansion of the population. However, nutria are shifty critters, and they were unable to completely eradicate them.  Thus, the population has persisted and increased, but at much lower levels than predicted by exponential growth.  Each year they conduct a census of the nutria population, and those data are presented in column H.  From here forward, use only the realized population values in column H; you don’t need to use anything that you calculated in columns A through D.  
+
+7.	Using the above information, answer questions #5 and #6.  Notice that in Excel you can raise a number (X) to an exponent (y) using the function =X^y.  So following _equation \ref{eq:9}_, if I wanted to estimate the cubed root of lambda, I could do so using the function =$\lambda^{(1/3)}$.
+
+
+# Lab Part 2 - Logistic Growth
+
+## Model system - whitetailed deer
+
+In this exercise we’ll use the discrete logistic equation to project growth for a hypothetical population of white-tailed deer (*Odocoileus virginianus*). Ungulates, such as deer, are often thought of as a 'poster child' for logistic growth models. As herbivores, deer can exhibit a fairly strong top-down pressure on plant communities, and at high abundance deer have regularly been demonstrated to reduce both the overall vegetation biomass and the biomass of their preferred food plants.  This negative feedback, where more animals result in fewer per-capita resources, is the essence of density-dependence, and density-dependent feedback on the population growth rate is a prerequisite for the logistic model. In lecture we will discuss why the nice tidy predictions of the logistic model often fail to match true population time series, but nevertheless whitetails provide us a nice case study to explore the logistic model in theory.    
+
+## Part 2 exercise 
+
+Open the worksheet tab labeled 'Logistic'. You'll see I’ve again given you a birth rate, death rate, and starting population size. I’ve also defined a **carrying capacity** (*K*) for this population of 200 animals. As with earlier, I’ve asked a series of questions for this exercise, but in this section I’m not going to tell you exactly where you need to look within your results to find the answers.  Also I am going to let you develop the Excel equations on your own, but I will help you out as needed.
+
+1. Calculate *r* and report this value in B4.  Next, let’s compute the instantaneous growth rate for this population ($dN/dt$) across a range of values for *N* using the logistic growth equation.  
+
+\begin{equation}
+  \label{eq:10}
+  \frac{dN}{dt}=rN(1-\frac{N}{K})
+\end{equation}
+
+2.	In column A, beginning in A9, I’ve given you a range of values for abundance beginning at 0 and leading up to our ultimate carrying capacity of 200 individuals.  Using _equation \ref{eq:10}_ as your basis, create an Excel formula that estimates the instantaneous rate of change in this population ($dN/dt$) at each level of abundance.  This relationship should display in the top graph pane.  Compare the output of your graph with your lecture notes to make sure you've produced an accurate representation of the $dN/dt$ - if not, there is something amiss in your formula.
+
+3.	In column E, beginning in Cell E10, project the discrete growth of this population for 25 years through time using the Ricker equation.  Recall from lecture that this equation is given as:
+
+\begin{equation}
+  \label{eq:11}
+  N_{t+1}=N_{t}e^{r_0(1-\frac{N_t}{K})}
+\end{equation}
+
+3. (cont) Again, you’ll need to develop your own equation (be mindful of parentheses and orders of operations!). The graph of this projection should display in the lower graph pane, and should match the typical shape of a logistic growth projection, with the population leveling out at around *K*.
+
+
+# Lab Part 3 - Stochasticity in Growth
+
+## Model system - wild turkeys
+
+In this exercise we’re again going to project exponential growth using the discrete exponential equation, but this time we’ll consider the influence of stochastic effects on population growth.  Here we are working with a reintroduced population of wild turkey (*Meleagris gallopavo*), which have generally moderate rates of both mortality and reproduction.  In this hypothetical system, there is also a moderate amount of **environmental stochasticity** that is driven by weather during the winter and/or spring.  In years with severe winters adult turkeys have a difficult time accessing food, and suffer increased mortality.  Turkey chicks are precocial and are very susceptible to exposure when first hatched, so severe wet and/or cold weather in late spring can also reduce reproductive output. 
+
+Wild turkeys have expanded their range considerably in the last century due to successful reintroduction and changes in human land uses that are mostly favorable to turkey habitat.  They have very recently expanded their distribution here in Maine and are by all accounts doing quite well.  This exercise should approximate the projected dynamics of turkeys in Maine’s northern climate in a situation where the turkey population has growth during recent decades, but where there is also considerable annual variation.  
+
+## Part 3 exercise - try it in R
+
+We will use a few simple functions in R to illustrate how a stochastic process can affect a population's growth rate, and cause deviations from the predictions of the exponential model.  I am also going to use this opportunity to introduce you to two new R skills - importing data, and loading packages. 
+
+### How to import data into R
+
+During our week one introduction, we worked in R using simple data strings we created ourselves, for example the fictitious values of mass and temperature that we used to fit a linear regression. More often though you will be in situations where you've collected data and entered it using another software, such as Excel, and you need to pull it into R to be analyzed.  While it would seem that this should be a simple task (and generally speaking it is) remembering how to get your data into R is actually one of the first big hurdles to the learning curve. I will walk you through two options, starting with the code-based option (i.e., the best one).
+
+1. In the Excel sheet under the 'Stochasticity' tab, you will find a simple datasheet listing 15 years and a series of abundance values to go with them.  You can imagine that these are an index to abundance, for example, the total number of turkeys harvest by hunters in Maine during the first 15 years of spring turkey hunting in the state. Using the File option in the upper corner, open a new blank Excel workbook, but keep your Growth.xls spreadsheet open.
+
+2. Highlight and copy the data contained in the Stochasticity sheet, and paste it into your new Excel spreadsheet.  Now, select the "Save As" feature under the file menu and navigate to the folder in which you are storing your files for this lab.  Name the new file 'Stoch', and before you hit save, change the file type to CSV (Comma delimited) from the 'Save type as' menu. Hit save, and you may be prompted with one or two questions, which you should answer yes to.
+
+3.  We have just created a comma delimited CSV data file from our spreadsheet, which is a generic file type that separates pieces of information (like columns of a spreadsheet) using commas. CSVs tend to be easier to work with, and have fewer quirks when transferring among software, than .xls or other Excel-based file types. Now we can import the file into R as a dataframe using the read.csv() command, as shown below.  Now, before you run this, notice that you will need to change the file pathway to the location on the computer where you saved the file. In my case, you'll see I have a folder on my desktop labeled 'R' where I tend to keep files, but you can use any file pathway. 
+
+
+```{r eval=FALSE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+
+Stoch <- read.csv('C:/Users/Erik/Desktop/R/Stoch.csv')
+
+```
+
+```{r include=FALSE, eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+Stoch <- read.csv('Stoch.csv')
+```
+
+> **_Sidebar - So you're still stuck on the file import? - _** If you're still stuck and getting error messages when you try to import, there are a few potential issues to troubleshoot.  First, double check that your file did in fact save as a CSV.  To do this, open Windows explorer (or the Mac equivalent if you're one of _THOSE_ people) and navigate to the folder where you've saved the file. Right click on the file and select 'Properties'.  It should be listed as a "Microsoft Excel Comma Separated Values File (.csv)".  Assuming that is correct, this is also your opportunity to double check that your file pathway is correct, which you can do using the Location: information provided in the file properties.  As a reminder, R is case and character sensitive to the Nth degree, so any deviation from the true file path will render your code useless. Also, notice that while windows uses backslashes in its file pathways, R wants to see forward slashes, so double check that. Lastly, make sure your file label is in quotes, as I have above.
+
+
+![**Example of file properties window**](file_properties.png)
+
+4.  Once your data file has been imported, it's always good practice to view the data and make sure everything looks ok.  There are at least four ways to accomplish this, as shown below.  Personally I find the summary() command particularly insightful for identifying potential issues with the data, and the head() command is handy for a quick look at your data without clogging up your console. 
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide'}
+
+# We can print the object directly to the R Console
+
+Stoch
+
+# We can print just the first few rows of the object
+
+head(Stoch)
+
+# We can 'view' the object in a separate tab in our Script window
+
+View(Stoch)
+
+# Or, we can ask R to produce a summary of the dataframe
+
+summary(Stoch)
+
+
+```
+
+
+5.  I promised you an alternate to a code-based file import, so here goes, although in general I find this tends to create more problems for students than it solves. If you successfully loaded your data using read.csv(), you can skip this step.  As a point-and-click alternative, you can use the “Import Dataset” option which can be accessed from the Tools menu or from the icon in the Environment Window (upper right pane).  If you go this route use the “From Text File” option and select our csv file from the appropriate directory, then name the new object “Stoch” on the next screen (this is very important – if you name it something else it the remainder of the code will need to be modified).  Be sure to use the Headings=Yes option, and to specify that the file uses a comma separator - these should be defaults, but your imported object will not work if they are not selected.  Click Import, and if this worked, you should be able to run the code for viewing the object that I provided above without issue.
+
+### Installing and using R packages
+
+R contains many base commands that are always active in the program.  Operations such such as the lm() command for a linear regression, or the summary() or plot() commands are examples of 'Base R' operations.  However, as an open source software, R users regularly develop specialized commands by writing their own “packages” to perform specific functions.  If you need to use a package to perform an operation or analysis, it’s necessary to first install and load the new package into R.  This is done using the install.packages() command, and then the package is loaded using the library() command.  Today we will be using the package “ggplot2” to produce a figure in R. [ggplot2 is a graphics package](https://ggplot2.tidyverse.org/) that allows a large amount of flexibility in making high-quality data visualizations.  We won't get into the specifics of the package today, but I will provide you some code to execute a ggplot graph of your results from this exercise.
+
+To load and install ggplot2, use the following:
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+
+
+#install.packages('ggplot2')
+
+library(ggplot2)
+
+
+
+```
+
+Notice that I've used a # to 'turn off' the install.packages() command.  Installing a package is only necessary if it isn't already loaded on your computer, which it may or may not be depending on whether you are working from a Nutting Hall machine versus your own.  To check, run the library() command first, and if you get an error saying there is no package called 'ggplot2', then remove the # and run the install.packages() command. Once the package is downloaded, you still also need to run the library() command to load it.
+
+We will illustrate use of the package below after we've got results of our stochasticity exercise. 
+
+### Stochastic turkey growth.
+
+You might recall from lecture that when we think about stochastic effects on population growth, we can express them based on the mean growth rate of the population, $\bar{\lambda}$ or $\bar{r}$, and its variability, which we can express using an expected standard deviation of the growth rate,  $\sigma_\lambda$ or $\sigma_r$.  We will use *r* to characterize growth because it has mathematical properties that are more convenient for this exercise. Populations with a relatively high value of $\sigma$ will be inherently more dynamic than those with a lower value.
+
+So, if we want to understand how stochasticity might affect turkey population growth, we need to classify both the mean growth rate and have an idea of its SD.  We can use our turkey harvest time series data to do both!
+
+First, we are going to use something called a 'for loop' to estimate the annual growth rate within each year of our time series. This will be equivalent to the process you used in Step X of part 1, where you typed in formula based on _equation \ref{eq:5}_ and dragged it down across cells to extend it among years.  Here, we will do the same process, but ask R to 'loop' through each of the cells.  The following code will execute the loop, and this is one of those cases where it's not critical you understand the code to finish the lab (but where I will offer some explanation, anyhow).
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+
+
+for (i in 2:nrow(Stoch)){
+  
+  Stoch$Lambda[i]<- Stoch$Abundance[i]/Stoch$Abundance[i-1]
+  
+}
+
+Stoch
+
+```
+
+What the for loop did was recreate the calculation of lambda using _equation \ref{eq:5}_, where we got an estimate of $\lambda$ for each row, i, by dividing the abundance in that row by the abundance in the previous row, i-1.  The first row is blank (NA) because as you recall for a time series of 16 years, there are 15 intervals over which to estimate lambda. You should also notice there was considerable variability in the time series, with some years experiencing 50-60% increase ($\lambda=1.5 - 1.6$) and at least one year the population declined ($\lambda<1.0$).  
+
+Now we have our series of $\lambda$ values, but as I said we will want to work with *r* for this exercise, so, we will need to convert them to *r* using the inverse of _equation \ref{eq:4}_
+
+
+\begin{equation}
+  \label{eq:12}
+  r=ln(\lambda)
+\end{equation}
+
+This is a relatively simple exercise in R 
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+
+
+Stoch$r<- log(Stoch$Lambda)
+
+Stoch
+ 
+
+```
+
+where with this code, we've created a new column in our data frame labeled 'r', that is estimated by the natural log of $\lambda$.  In this case, R knows to complete the log() operation (which in R performs a base natural log, or ln, transformation) for every row of the object Stoch based on the value contained in the Lambda column within that row, so there is no need to use a for loop.
+
+Next, we need to calculate the mean and SD of our new values of r.  Again these are both easily implemented in R and the code below should be fairly intuitive, except for the command na.rm=TRUE, which is included so that R will ignore the missing value (represented by NA) in the first row of Stoch$r.
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+
+mean.r<- mean(Stoch$r, na.rm=TRUE)
+mean.r
+
+
+SD.r<- sd(Stoch$r, na.rm=TRUE)
+ 
+SD.r
+
+```
+
+As the printed results illustrate, the mean annual growth rate from our turkey time series was $\bar{r}$=0.29, and the standard deviation was $SD_r$=0.17.
+
+> **_Sidebar - Calculating a mean value for *r* - _** You should recall from lecture that when we work with $\lambda$ and want to calculate an 'average', that we have to use the geometric mean.  One advantage to working with *r* as our growth rate is that we can stick with the simpler arithmetic mean, or a simple average value, because of the mathematical properties of *r*.  Of course, R could calculate a geometric mean for us, but we'd need to load a seperate package to perform the operation as it's not included in base R.
+
+Now that we have our mean and SD of the annual growth rate, we can evaluate how the variability in annual growth is likely to create variation in the population trajectories.  This is going to be another case where I give you a fairly large chunk of moderately complicated code for the sake of illustrating an example.  I don't expect you to understand it fully, but hopefully the end product is insightful.  Go ahead and run the code, and I'll provide a cursory explanation of what it did below, before we get to the results.
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide'}
+
+#starting abundance
+
+N.0 <- 25
+
+# number of years in simulation
+
+N.Years <- 15
+
+# total number of simulated time series
+
+N.Sim <- 20
+
+# create sequence of years and simulation numbers
+
+Year <- rep(seq(1,N.Years,1), times=N.Sim)
+
+Sim <- rep(rep(seq(1,N.Sim,1), each=N.Years))
+
+# format in a dataframe
+
+Pop.Sim <- data.frame(Year=Year, Sim=as.character(Sim), N=NA)
+
+# work through the dataframe and compute exponential growth
+
+for (t in 1:nrow(Pop.Sim)){
+  Pop.Sim$N[t] <- ifelse(
+      Pop.Sim$Year[t]=="1",
+      N.0*exp(rnorm(1, mean.r, SD.r)),
+      Pop.Sim$N[t-1]*exp(rnorm(1, mean.r, SD.r))
+    )
+  }
+
+View(Pop.Sim)
+
+```
+
+When you take a look at the data.frame() object Pop.Sim, you'll see that we've now got 1-20 simulated 15-year time series of turkey abundance.  Within each of these, the function above calculated the basic continuous exponential growth equation (_equation \ref{eq:1}_) using an ifelse() statement, where the growth in year 1 was based on the initial population size (N.0) if it was the first year of a simulation (Year[t]=1), and the growth in every subsequent year was based on the previous years abundance (N[t-1]).  
+
+For each time step, we used the rnorm() function to draw a new, random value of *r* from a normal distribution that was centered on mean.r and with a standard deviation of SD.r.
+
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide', fig.show='hide'}
+
+library(ggplot2)
+
+sim.plot<- ggplot(data=Pop.Sim, 
+                  aes(x=Year, y=N, color=as.factor(Sim))) +
+  geom_line(size=1.25, alpha=0.5)+
+  theme_bw()+
+  theme(legend.position = "none")
+  
+sim.plot
+
+
+```
+
+You output graph should provide a variety of different colored lines, each reflecting different outcomes of the stochastic time series simulation.  Said differently, if we could observe 20 different turkey populations that shared a common mean growth rate, but that also experienced stochastic annual variation, this is an example of what each of their population trends would look like.  
+
+Just to drive home how this differs from the predictions under the deterministic version of the model based on the mean value of *r*, lets add that mean prediction to the graph.
+
+```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+
+#creates estimates based on the deterministic exponential model and the mean growth rate
+
+Years.mean<- seq(1,N.Years,1)
+N.mean<- N.0*exp(mean.r*Years.mean) 
+N.mean.df<- data.frame(Years.mean, N.mean)
+
+# adds them to the plot
+
+sim.plot + geom_line(data=N.mean.df, 
+                     aes(x=Years.mean, y=N.mean), 
+                     color="black", size=1.5, 
+                     linetype='dashed')
+
+
+```
+
+
+In the first three lines of code, we create a sequence of 1 to 15 years (first line), apply _equation \ref{eq:1}_ to them in the second line, and create a combined dataframe in the third line.  Then we use the geom_line() command to add an additional line to our sim.plot object, which already contained our stochastic simulations. Note - your graphs will not look exactly like the one printed above.  Every time we run the simulation, we produce new, slightly different results because of the random nature of the stochastic variation. 
+
+Use the results of this simulation exercise to answer questions 10-12 from the assignment.  In doing so, you may choose to draw interpretation from the figure you created, or, you may elect to view any of the objects you created in R to obtain your answers.
+
+
+# The Three Big Things You Should Have Learned Today
+
+**FIRST** How to apply the exponential and logistic models to project population time series in a spreadsheet modeling framework.
+
+**SECOND** How to derive population growth rates from time series of counts, and use them to make interpretations about population status and the effects of management.
+
+**THIRD** How stochasticity in the population growth rate affects the outcome of a population time series, sometimes producing highly variable results!
+
+
+# Lab 2 Assignment
+
+Lab 2 Assignment: Your assignment for this lab will be to complete and turn in the following questions related to Parts 1, 2, and 3. Please answer questions completely.  For example, when I ask for the instantaneous rate of increase, your answer should include *r*= rather than just listing the single number.  If I ask for explanatory answers rather than numeric values, please use complete sentences. In addition to the lab handout, I will post a Word file on Brightspace that can be filled in. For full credit submit the completed answers to your questions, your completed Excel file, and your annotated R script to Brightspace.   
+
+Part 1 – Exponential Growth
+
+1.	What is the instantaneous rate of increase for the hypothetical population of nutria?
+
+
+2.	What is the predicted population size for nutria in year 10 based on your projection of continuous exponential growth?
+
+
+3.	What is the geometric rate of population increase ($/lambda$) for the nutria population? What does this tell us about the annual rate of change for this population?  What is the cumulative rate of change predicted to be during the first 3 years post-release?
+
+
+4.	What was your predicted population size for nutria in year 10 based on the discrete exponential projection?
+
+
+5.	For the managed population of nutrias, what was cumulative rate of population growth during the entire 10 year period?  What was the annual population growth rate?  
+
+
+6.	Is there any reason to suspect that management effectiveness changed during the 10-year period?  Briefly describe how do arrived at your answer?
+
+
+7.	Given the rate of growth experienced during the last 3 years (Years 8, 9, 10), what do you predict the size of the population will be in year 15?
+
+Part 2 – Logistic Growth.
+
+8.	At what abundance (N) do we expect this population to exhibit the greatest rate of growth?  What value of dN/dt do we find at this abundance, and what is the biological interpretation of this number?
+
+
+9.	When (approximately) does this population reach carrying capacity?  In what year (approximately) is the population growing at the fastest rate?
+
+
+Part 3 – Stochasticity.  
+
+10.	What was the projected population size in year 15 based on the deterministic projection model?  What is the approximate range of ending population sizes you obtained for the 20 stochastic simulations?
+
+11.	In a few sentences, describe why you might find such significant variation in the ending population size after 15 years, even though the same mean growth rate governed all the hypothetical populations?
+
+12.	Is there a major risk that a population of turkeys could go extinct during a 15-year time period, given the same mean and SD for the growth rate? Support your answer with evidence from the simulation. 
+
+# Lab Appendix
+
+## Quick reference for important R commands in this lab
+
+We learned to use the read.csv() command to import a comma-delimited data file into R.  From my perspective, this is the most generic, and least likely to cause errors, way to import your data.
+
+
+```{r eval=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide'}
+
+Object.name<- read.csv('C:/Users/Your Name/Your File Path/CSVFile.csv')
+
+
+```
+
+To interact with imported data, we learned a few different commands:
+
+```{r eval=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide'}
+
+# We can print the object directly to the R Console
+
+Object.name
+
+# We can print just the first few rows of the object
+
+head(Object.name)
+
+# We can 'view' the object in a separate tab in our Script window
+
+View(Object.name)
+
+# Or, we can ask R to produce a summary of the dataframe
+
+summary(Object.name)
+
+```
+
+
+We learned how to install and load 'packages' that often have specialized operations
+
+
+```{r eval=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide'}
+
+## install the package onto your computer
+
+install.pacakage("PackageName")
+
+## and turn it on using the library() command
+
+library("PackageName")
+
+```
+
+
+And, we used a few simple operators that will be handy in the future
+
+```{r eval=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='hide'}
+
+## computes the mean of a vector
+
+mean(Object.name$column.name)
+
+## computes the standard deviation of a vector
+
+sd(Object.name$column.name)
+
+## computes the natural log (ln) for each element of a vector
+
+log(Object.name$column.name)
+
+```
+
+
+## For more information
+
+This lab drew heavily from concepts related to exponential and logistic growth that we covered during lecture, so our lecture notes materials are a good first starting point, as well as [Chapter 5 in Mills' *Conservation of Wildlife Populations*](https://www.wiley.com/en-us/Conservation+of+Wildlife+Populations%3A+Demography%2C+Genetics%2C+and+Management%2C+2nd+Edition-p-9780470671498). 
+
+Other very good text book resources covering principles of population growth include:
+
+[Gotelli's *A Primer of Ecology*](https://global.oup.com/academic/product/a-primer-of-ecology-9780878933181?cc=us&lang=en&) gives a much more thorough, yet still accessible inroad to math underlying foundational population models.  This is the text I relied on most heavily when developing my course materials. 
+
+[Case's *An Illustrated Guide to Theoretical Ecology*](https://global.oup.com/ushe/product/an-illustrated-guide-to-theoretical-ecology-9780195085129?cc=us&lang=en&) is a popular and I would say more advanced text linking basic ecological theory with the math behind the models.  Chapters 1, 5, and 6 have the most direct relevance to materials covered in this lab.
+
+## Glossary of Terms
+
+**Carrying capacity** - in the logistic model of population growth, the upper limit imposed on abundance within a population.  Typically denoted by *k*
+
+**Continuous exponential growth** - a model of exponential growth where abundance is said to change instantaneously, and growth rate is typically represented by the instantaneous rate of increase, *r*
+
+**Cumulative population growth** - the total population change experienced during >1 time step, expressed as a population growth rate multiplier (*r* or $\lambda$) that denotes the change occurring across all intervals.  For a 2-interval time step, $r_2=2r$ while $\lambda_2=\lambda^2$
+
+**Environmental Stochasticity** - background variation in the environment that in turn produces random variation in one or more vital rate, causing the annual growth rate to also be variable.  Often expressed in terms of the mean and variance of the growth rate.
+
+**Discrete exponential growth** - a model of exponential growth where abundance is said to change in discrete increments, such as an annual time step.  The growth rate between each time step is typically represented by the geometric rate of increase, $\lambda$
+
+**Geometric growth rate** - the growth rate multiplier associated with the discrete form of the exponential model, typically denoted by $\lambda$
