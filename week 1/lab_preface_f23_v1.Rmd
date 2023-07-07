@@ -163,7 +163,7 @@ Equation example:
 
 Which you should recognize as the general equation for an arithmetic mean, otherwise
 known as an average. When I reference an equation in text, I will write something like
-"Calculate the average of x using [**\textcolor{red}{Equation 1}**](#eq1)", where the red text should be hyperlinked to the equation.
+"Calculate the average of x using **_equation \textcolor{red}{\ref{eq:1}}_**, where the red number should be hyperlinked to the equation.
 
 ## R Code
 

@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Setting the Stage"
-author: "Erik Blomberg"
+author: "Erik Blomberg (edited by Matt Mensinger and Liam Berigan)"
 date: "`r format(Sys.time(), '%m/%d/%Y')`"
 header-includes:
   - \usepackage{setspace}\onehalfspacing
@@ -14,7 +14,7 @@ output:
     toc: yes
     df_print: paged
     number_sections: yes
-    latex_engine: xelatex
+    latex_engine: pdflatex
 ---
 
 
