@@ -1,0 +1,16 @@
+Week,Dates,Topic,Reading
+1,Aug 28 or Sep 1,Course Introduction and Computer Lab/Software Primer,None
+2,Sep 4 or 8,No Lab (Labor Day),None
+3,Sep 11 or 15,Lab 1: Refresher on Lincoln-Peterson population estimation,"Chapter 1, Article on Spreadsheet Basics"
+4,Sep 18 or 22,Lab 2: Exponential and logistic population growth,Chapter 2
+5,Sep 25 or 29,Lab 2 (continued),None
+6,Oct 2 or 6,Lab 3: Time series analysis of population trends,Chapter 6
+7,Oct 9 or 13,No Lab (Fall Break),None
+8,Oct 16 or 20,"Lab 4: Probability, maximum likelihood, and model selection","Chapters 3, 4"
+9,Oct 23 or 27,Lab 5: Introduction to survival estimation in R,Chapter 6 and 7
+10,Oct 30 or Nov 3,Lab 6: Known Fate 1,Chapter 10
+11,Nov 6 or 10,No Lab (Veteran's Day),None
+12,Nov 13 or 17,Lab 7: Known Fate 2- Use of explanatory covariates,"Chapter 9, review Chapter 6"
+13,Nov 20 or 24,Lab 8: Stage-structured population models,Chapter 19
+14,Nov 27 or Dec 1,No Lab (Thanksgiving Break),None
+15,Dec 4 or 8,Lab 9: Distance sampling in Program R,None

@@ -1,0 +1,199 @@
+---
+title: "WLE 411 – Wildlife Population Dynamics Laboratory"
+subtitle: ' Course Description and Syllabus'
+author: "Fall 2023"
+date: "`r format(Sys.time(), '%m/%d/%Y')`"
+header-includes:
+  - \usepackage{setspace}\onehalfspacing
+  - \setlength\parindent{12pt}
+  - \usepackage{lscape}
+  - \newcommand{\blandscape}{\begin{landscape}} 
+  - \newcommand{\elandscape}{\end{landscape}}
+fontsize: 12pt
+output:
+  pdf_document:
+    toc: yes
+    df_print: paged
+    number_sections: yes
+    latex_engine: pdflatex
+    
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE}
+library(knitr)
+library(kableExtra)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-200 {
+max-height: 200px;
+max-width: 100%;
+overflow-x: auto
+overflow-y: auto;
+background-color: inherit;
+}
+```
+
+# Front Matter
+
+|    **Instructor:**
+
+Liam Berigan
+
+Office: 232A Nutting Hall
+
+Email: liam.berigan@maine.edu
+
+Office Hours: Thursdays 1 to 2 pm, or by appointment. \newline
+
+**Teaching Assistant:**
+
+Marcos Rodriguez
+
+Office: 
+
+Email: marcos.rodriguez@maine.edu
+
+Office Hours:\newline
+
+**Number of credit hours:** 1
+
+**Prerequisites:** Concurrent enrollment in WLE 410 or with permission.
+
+**Class Meeting Times and Locations:**
+
+- Friday (Section 1) 9:00-11:50 am, 254 Nutting Hall
+
+- Monday (Section 2) 1:00-3:50 pm, 235 Nutting Hall
+
+# Course Overview
+How many moose are there in Maine? What life stage limits the recovery of Atlantic salmon? Does hunting reduce the numbers of black ducks in the Atlantic Flyway? Which forest songbird populations are expected to be impacted by climate change? Understanding how animal abundance changes over time and space, and what causes abundance to change, are two subjects that are central to wildlife and fisheries management. In population ecology, we attempt to quantify these changes and explain the mechanisms behind them. This requires evaluating population size and the underlying demographic rates (survival, recruitment, and immigration/emigration) that contribute to population growth or decline. In this lab we will gain experience working with data to estimate demographic rates using quantitative methods.
+
+# Course Goals and Objectives
+In this lab we will examine the field of quantitative population dynamics. This field is complex and extremely broad, and this course is meant to introduce you to just some of the more commonly-used methods for evaluating wildlife populations. It should therefore be thought of as an introduction to an advanced subject. With that said, my goal is for you to leave the course with the ability to expand on the skills introduced in this course as you move forward in your careers. My objectives are to provide you with practical experience analyzing data on animal abundance, survival, population growth, population trend, and vulnerability.
+
+# Learning Outcomes
+Successful students will leave this course better able to:
+
+1. Design wildlife field studies that are useful for population monitoring and analysis
+
+2. Apply quantitative methods to estimate animal abundance, survival, and population growth, and interpret the results of those analyses.
+
+3. Have a greater familiarity with computer software commonly used for wildlife population analysis.
+
+4. Critically assess others' work and provide constructive suggestions in these areas.
+
+# Lab Structure
+Each week’s lab will consist of a data analysis exercise with an associated assignment (described more below). I’ll generally spend a few minutes at the beginning of the lab period saying a thing or two about the lab content, but overall I’ve designed the lab handouts to really stand alone as both a how-to manual and also a learning resource; you should think of them as sort of a hybrid between an instructional booklet and a standard textbook. To that end, the labs are designed to provide structured self-learning with support, where the support comes from myself and the TAs to assist you as you work.
+
+# Attendance Policy
+In general, I expect everyone to attend lab meetings and to work through the lab exercises at that time. With that said, all the lab materials will be available via Brightspace, and the labs themselves are designed specifically to allow self-teaching and remote completion. So, if you have to miss a lab meeting, please let me know via email as early as possible, and you’ll be expected to complete the lab exercise on your own and get help if needed from myself or a TA during our office hours. I ask that you not abuse this rather flexible policy. If you choose to not come to class simply for convenience, please don’t expect us to make great concessions in helping you to complete lab assignments. If you are habitually absent, I will likely reach out to you and ask that you continue coming to class.
+
+# Computing Resources
+All labs for this course will involve computer-based data analysis, and we have the computers in the Room 254/245 lab to work with. All of the work we will do can be completed on a standard laptop or home computer, and all of the software (described below) is either free to download or available to you for free via UMaine IT. So, you may elect to complete the lab using your personal computer, either to do the work in class or to finish it outside of class, but this will require you to download and install the appropriate programs.
+
+# Software
+We will use a number of different programs throughout the semester, including Microsoft Excel (Google Sheets will not work), Program R and RStudio, and Program MARK. On the course Brightspace page in the Content area, you’ll find a subpage labelled ‘Software Downloads’ which contains links with downloading instructions for each of these software. During the first week of class we’ll discuss each of these.
+
+# File storage and management
+If you are working on your personal computer you likely have a file storage process in place (even if you don’t realize it) for saving your work on your computer’s hard drive. If you are working on the Nutting Hall computers, you can save your work on the D:/ drive of the computer and it should be reasonably safe, although recognize anyone else using that computer may be able to access it and inadvertently delete it. In either case, I strongly recommend that you use cloud-based storage to backup your work (that goes for this class and life in general). Through your maine.edu accounts, you have access to nearly unlimited storage through at least two cloud-based platforms; Google Drive and Microsoft OneDrive. I personally use Google Drive Filestream to sync files between my laptop and the cloud, and it works relatively well.
+
+# Reference Text
+We will use the book “Estimation of Parameters for Animal Populations” by Powell and Gale as a reference text for much of the course. This book is available for free as a downloadable e-book from the author’s webpage:
+
+[\textcolor{blue}{http://larkinpowell.wixsite.com/larkinpowell/estimation-of-parameters-for-animal-pop}](http://larkinpowell.wixsite.com/larkinpowell/estimation-of-parameters-for-animal-pop)
+
+You can also purchase a hard copy if you like for the bargain price of $17.50 – see purchasing links on the same website linked above.
+I’ve listed assigned chapters for almost each week of lab below. Reading the chapters in advance of lab will give you a greater depth of understanding while completing the lab exercises, and will help you to achieve higher grades on assignments.
+
+# Lab Materials
+On Brightspace you’ll find a subpage containing all lab materials for the semester. Within this link there will be a folder for each week’s lab that contains that week’s handout, data files, assignments, any additional files or information associated with the analysis, and a grading rubric for each assignment.
+
+# Electronic Resources
+We will use Brightspace as the primary electronic platform for the course. You can access the Brightspace Course page through your mycampus portal. I will use Brightspace for posting any additional assigned readings, and for
+making datasets and other course materials (assignments, course syllabus, etc.) available to you. For technical assistance using Brightspace visit the IT Help Center [\textcolor{blue}{http://www.umaine.edu/it/helpcenter/}](http://www.umaine.edu/it/helpcenter/) or call 581-2506.
+
+# Course Requirements
+
+## Grading 
+
+Grading in this course will be based on weekly lab assignments (10 assignments worth 15 points each for a total of 150 possible points). All assignments are due at the beginning of class on the date listed. Late assignments will receive a 10% deduction for each day late up to four days, at which point you will not receive credit for that assignment. With that said, I understand that things happen and sometimes there are extenuating circumstances, so I always encourage you to contact me if you need to request an extension on an assignment. Any extensions granted by me will supersede deadlines listed above.
+
+Your final grade will be assigned as follows:
+
+```{r eval=TRUE, echo=FALSE, warning=FALSE}
+xl <- data.frame(Grade=c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"),
+                 `Percentage Range`=c("93.33 - 100%", "90 – 93.32%", "86.67 - 89.99%", "83.33 – 86.66%", "80 – 83.32%", "76.67 – 79.99%", "73.33 – 76.66%", "70 – 73.32%", "65 - 69.99%", "< 65%"))
+
+xl %>%
+  kbl(format = "latex", col.names = c("Grade" , "Percentage Range"), align = "c") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position") #, position = "center"
+```
+
+## Lab assignments
+
+There will be weekly written assignments that correspond to each lab topic. Lab assignments will be variable in their format, and may range from a series of questions to a more formal written document. In all cases I expect that you will hand in completed assignments of professional quality. All lab assignments should be submitted electronically through the “Assignments” page on Brightspace.
+
+Lab assignments will be due at the beginning of lab the following week unless otherwise specified in the schedule below. Each lab will include a written handout that details expectations, and we will provide grading rubrics in each lab folder on Brightspace that detail specific grading criteria.
+
+You are allowed to revise two lab assignments during the semester for up to the full number of available points. Revised assignments should be submitted directly to the course TA, via email, within 2 weeks of receiving your grade on the assignment. Revised assignments will not be accepted after this 2-week period.
+
+## Students with Accessibility Accommodations 
+
+If you have a disability for which you may be requesting an accommodation, please contact Student Accessibility Services, 121 East Annex, um.sas@maine.edu, 581.2319, as early as possible in the term. Students may begin the accommodation process by submitting an accommodation request form online and uploading documentation using [\textcolor{blue}{this link}](https://umaine-accommodate.symplicity.com/public_accommodation). Once students meet with SAS and eligibility has been determined, students submit an online request with SAS each semester to activate their approved accommodations. SAS creates an accessibility letter each semester which informs faculty of potential course access and approved reasonable accommodations; the letter is sent directly to the course instructor. Students who have already been approved for accommodations by SAS and have a current accommodation letter should meet with me privately as soon as possible.
+
+## Attendance and Participation
+In general I expect that you will attend lab meeting times and work through the labs and assignments during class times. With that said, I understand a myriad of issues may complicate your ability for attendance. Stuff happens. If you need to miss a lab period, please let me know as early as possible. The labs and assignments are written such that you should be able to complete them working on your own outside of class, but during class the TAs and I are available to help troubleshoot any issues you encounter and to answer your questions. If you miss lab, you are still expected to complete the lab and turn in the assignment by the submission deadline, unless you request and are granted an extension from me.
+
+I also expect that you will be courteous to your fellow classmates and to me during our class, and I will extend you the same courtesy.
+
+## Academic Honesty Statement
+Academic honesty is very important. It is dishonest to cheat on exams, to copy term papers, to submit papers written by another person, or generated by software or systems without the explicit approval of the instructor, to fake experimental results, or to copy or reword parts of books or articles into your own papers without appropriately citing the source. Students committing or aiding in any of these violations may be given failing grades for an assignment or for an entire course, at the discretion of the instructor. In addition to any academic action taken by an instructor, these violations are also subject to action under the University of Maine Student Conduct Code.  The maximum possible sanction under the student conduct code is dismissal from the University.  Please see the University of Maine System’s Academic Integrity Policy listed in the Board Policy Manual as Policy 314: [\textcolor{blue}{https://www.maine.edu/board-of-trustees/policy-manual/section-314/}](https://www.maine.edu/board-of-trustees/policy-manual/section-314/)
+
+In this class you may find opportunity to work collaboratively on assignments, either during or outside of lab. I completely encourage you to work with and help each other in better understanding the lab materials. However, all assignments that you turn in should clearly reflect an independent effort on your part, so while you may work together while completing the labs I expect that you will each produce your own unique assignments. Please do not complete a single assignment for two or more people and turn in multiple identical copies, because I cannot distinguish between collaboration and copying in that case.
+
+\newpage
+\blandscape
+
+# Course Schedule
+
+```{r eval=TRUE, echo=FALSE, warning=FALSE}
+read.csv("course_schedule.csv") %>%
+  kbl(format = "latex", align = "l") %>%
+  kable_styling(full_width = F, position = "center", latex_options = "HOLD_position") %>% 
+  add_footnote(c("This schedule is subject to change at my discretion", "Chapters refer to the reference text (Powell & Gale)"))
+```
+
+
+\elandscape
+
+## Final exam
+There is no final exam for this course.
+
+## Course Schedule Disclaimer (Disruption Clause)
+In the event of an extended disruption of normal classroom activities (due to COVID-19 or other long-term disruptions such as a zombie apocalypse), the format for this course may be modified to enable its completion within its programmed time frame. In that event, you will be provided an addendum to the syllabus that will supersede this version.
+
+# University Policy
+
+## Observance of Religious Holidays/Events
+
+The University of Maine recognizes that when students are observing significant religious holidays, some may be unable to attend classes or labs, study, take tests, or work on other assignments. If they provide adequate notice (at least one week and longer if at all possible), these students are allowed to make up course requirements as long as this effort does not create an unreasonable burden upon the instructor, department or University. At the discretion of the instructor, such coursework could be due before or after the examination or assignment. No adverse or prejudicial effects shall result to a student’s grade for the examination, study, or course requirement on the day of religious observance. The student shall not be marked absent from the class due to observing a significant religious holiday. In the case of an internship or clinical, students should refer to the applicable policy in place by the employer or site.
+
+## Sexual Discrimination Reporting
+
+The University of Maine is committed to making campus a safe place for students. Because of this commitment, if you tell a teacher about an experience of sexual assault, sexual harassment, stalking, relationship abuse (dating violence and domestic violence), sexual misconduct or any form of gender discrimination involving members of the campus, your teacher is required to report this information to Title IX Student Services or the Office of Equal Opportunity.
+
+If you want to talk in confidence to someone about an experience of sexual discrimination, please contact these resources:
+
+*For confidential resources on campus:* Counseling Center: 207-581-1392 or Cutler Health Center: at 207-581-4000.
+
+*For confidential resources off campus:*  Rape Response Services: 1-800-871-7741 or Partners for Peace: 1-800-863-9909.
+
+**Other resources:** The resources listed below can offer support but may have to report the incident to others who can help:
+
+*For support services on campus:* Title IX Student Services: 207-581-1406, Office of Community Standards: 207-581-1409, University of Maine Police: 207-581-4040 or 911. Or see the Title IX Student Services website for a [\textcolor{blue}{complete list of resources}](https://umaine.edu/titleix/). Also, [\textcolor{blue}{Student Wellness Resource Center}](https://umaine.edu/wellness/).
