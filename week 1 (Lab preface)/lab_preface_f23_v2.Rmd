@@ -158,7 +158,7 @@ Equation example:
 
 \begin{equation}
  \label{eq:1}
-  \bar{x}=\frac{1}{n} \sum_{i=0}^{n}x_i
+  \bar{x}=\frac{1}{n} \sum_{i=1}^{n}x_i
 \end{equation}
 
 Which you should recognize as the general equation for an arithmetic mean, otherwise
@@ -447,7 +447,7 @@ abline(reg1)
 ```
 
 6. R can also be used to complete mathematical operations and these can be integrated
-into working with data frames. For example, lets add a new attribute column to
+into working with data frames. For example, let's add a new attribute column to
 mass.temp that converts mass (currently in grams) to kilograms by dividing it by
 1000:
 
