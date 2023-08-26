@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(gganimate)
+```
+
+Create matrix for the population sizes and starting population sizes
+```{r}
+species_cycle <- matrix(nrow = 500, ncol = 2)
+colnames(species_cycle) <- c("Prey", "Predators")
+
+# prey
+species_cycle[1, 1] <- 40 #stable number: 20
+
+# predators
+species_cycle[1, 2] <- 5  #stable number: 5
+```
+
+Set parameters for the lotka-voltera equations
+Parameters from https://www.omnicalculator.com/ecology/lotka-volterra-equations#what-are-the-lotka-volterra-equations-population-dynamics
+```{r}
+alpha <- 0.1 #reproduction rate of prey
+beta <- 0.02 #mortality rate of predator per prey
+gamma <- 0.002 #reproduction rate of predator per prey
+delta <- 0.04 #mortality rate of predator
+```
+
+Iterate through the lotka-volterra equations
+```{r}
+for (i in 2:nrow(species_cycle)){
+  x <- species_cycle[i-1, 1]
+  y <- species_cycle[i-1, 2]
+  
+  # prey
+  species_cycle[i, 1] <- x + (alpha*x) - (beta*x*y)
+  species_cycle[i, 1] <- if_else(species_cycle[i, 1] >= 0, species_cycle[i, 1], 0)
+
+  # predators
+  species_cycle[i, 2] <- y + (gamma*x*y) - (delta*y)
+  species_cycle[i, 2] <- if_else(species_cycle[i, 2] >= 0, species_cycle[i, 2], 0)
+}
+```
+
+Plot
+```{r}
+species_cycle <- as.data.frame(species_cycle) %>% 
+  mutate(Time = 1:nrow(species_cycle)) %>% 
+  pivot_longer(cols = c("Prey", "Predators"), names_to = "Species", values_to = "Population")
+
+anim <- species_cycle %>% 
+  ggplot(mapping = aes(x = Time, y = Population, color = Species)) +
+  geom_line(linewidth = 1.5) +
+  theme_bw() +
+  transition_reveal(Time) +
+  view_zoom_manual(pause_length = 0,
+                   step_length = 1,
+                   pause_first = F,
+                   ease = "linear", 
+                   wrap = TRUE,
+                   xmin = 1:50,
+                   xmax = (max(species_cycle$Time)-49):max(species_cycle$Time),
+                   ymin = min(species_cycle$Population),
+                   ymax = max(species_cycle$Population)
+                   ) +
+  theme(axis.title.x = element_text(size=18),
+        axis.title.y = element_text(size=18),
+        legend.title=element_text(size=18),
+        legend.text=element_text(size=14)) +
+  scale_color_manual(values = c("#cc503e", "#1d6996"))
+
+animate(anim, height = 400*2, width = 700*2, res = 100)
+
+anim_save("intro_animation.gif")
+```
+
