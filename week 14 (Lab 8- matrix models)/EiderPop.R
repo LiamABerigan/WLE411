@@ -93,11 +93,3 @@ eider.proj$stage.vectors
 
 eider.proj$pop.changes
 
-
-
-
-
-
-
-
-  
