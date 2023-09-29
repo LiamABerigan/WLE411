@@ -1,0 +1,124 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+mean.lambda <- 1.5
+SD.lambda <- 0.4
+
+#starting abundance
+N.0 <- 25
+# number of years in simulation
+N.Years <- 15
+# total number of simulated time series
+N.Sim <- 20
+# create sequence of years and simulation numbers
+Year <- rep(seq(1, N.Years, 1), times = N.Sim)
+Sim <- rep(rep(seq(1, N.Sim, 1), each = N.Years))
+# format in a dataframe
+Pop.Sim <- data.frame(Year = Year, Sim = as.character(Sim), N = NA)
+# work through the dataframe and compute exponential growth
+for (t in 1:nrow(Pop.Sim)) {
+  Pop.Sim$N[t] <- ifelse(Pop.Sim$Year[t] == "1", 
+                         N.0 * rnorm(1, mean.lambda, SD.lambda), 
+  Pop.Sim$N[t - 1] * rnorm(1, mean.lambda, SD.lambda))
+  
+  Pop.Sim$N[t] <- if_else(Pop.Sim$N[t] < 0, 0, Pop.Sim$N[t])
+}
+
+sim.plot <- ggplot(data = Pop.Sim, aes(x = Year, y = N, color = as.factor(Sim))) +
+  geom_line(size = 1.25, alpha = 0.5) + theme_bw() + theme(legend.position = "none")
+sim.plot
+```
+
+```{r}
+mean.lambda <- 1.5
+SD.lambda <- 1
+
+#starting abundance
+N.0 <- 25
+# number of years in simulation
+N.Years <- 15
+# total number of simulated time series
+N.Sim <- 20
+# create sequence of years and simulation numbers
+Year <- rep(seq(1, N.Years, 1), times = N.Sim)
+Sim <- rep(rep(seq(1, N.Sim, 1), each = N.Years))
+# format in a dataframe
+Pop.Sim <- data.frame(Year = Year, Sim = as.character(Sim), N = NA)
+# work through the dataframe and compute exponential growth
+for (t in 1:nrow(Pop.Sim)) {
+  Pop.Sim$N[t] <- ifelse(Pop.Sim$Year[t] == "1", 
+                         N.0 * rnorm(1, mean.lambda, SD.lambda), 
+  Pop.Sim$N[t - 1] * rnorm(1, mean.lambda, SD.lambda))
+  
+  Pop.Sim$N[t] <- if_else(Pop.Sim$N[t] < 0, 0, Pop.Sim$N[t])
+}
+
+sim.plot <- ggplot(data = Pop.Sim, aes(x = Year, y = N, color = as.factor(Sim))) +
+  geom_line(size = 1.25, alpha = 0.5) + theme_bw() + theme(legend.position = "none")
+sim.plot
+```
+
+```{r}
+mean.lambda <- 1.5
+SD.lambda <- 0.4
+
+#starting abundance
+N.0 <- 5
+# number of years in simulation
+N.Years <- 15
+# total number of simulated time series
+N.Sim <- 20
+# create sequence of years and simulation numbers
+Year <- rep(seq(1, N.Years, 1), times = N.Sim)
+Sim <- rep(rep(seq(1, N.Sim, 1), each = N.Years))
+# format in a dataframe
+Pop.Sim <- data.frame(Year = Year, Sim = as.character(Sim), N = NA)
+# work through the dataframe and compute exponential growth
+for (t in 1:nrow(Pop.Sim)) {
+  Pop.Sim$N[t] <- ifelse(Pop.Sim$Year[t] == "1", 
+                         N.0 * rnorm(1, mean.lambda, SD.lambda) - rpois(10, 3), 
+  Pop.Sim$N[t - 1] * rnorm(1, mean.lambda, SD.lambda)- rpois(10, 3))
+  
+  Pop.Sim$N[t] <- if_else(Pop.Sim$N[t] < 0, 0, Pop.Sim$N[t])
+}
+
+sim.plot <- ggplot(data = Pop.Sim, aes(x = Year, y = N, color = as.factor(Sim))) +
+  geom_line(size = 1.25, alpha = 0.5) + theme_bw() + theme(legend.position = "none")
+sim.plot
+```
+
+```{r}
+mean.lambda <- 1.1
+SD.lambda <- 0.4
+
+#starting abundance
+N.0 <- 25
+# number of years in simulation
+N.Years <- 15
+# total number of simulated time series
+N.Sim <- 20
+# create sequence of years and simulation numbers
+Year <- rep(seq(1, N.Years, 1), times = N.Sim)
+Sim <- rep(rep(seq(1, N.Sim, 1), each = N.Years))
+# format in a dataframe
+Pop.Sim <- data.frame(Year = Year, Sim = as.character(Sim), N = NA)
+# work through the dataframe and compute exponential growth
+for (t in 1:nrow(Pop.Sim)) {
+  Pop.Sim$N[t] <- ifelse(Pop.Sim$Year[t] == "1", 
+                         N.0 * rnorm(1, mean.lambda, SD.lambda), 
+  Pop.Sim$N[t - 1] * rnorm(1, mean.lambda, SD.lambda))
+  
+  Pop.Sim$N[t] <- if_else(Pop.Sim$N[t] < 0, 0, Pop.Sim$N[t])
+}
+
+sim.plot <- ggplot(data = Pop.Sim, aes(x = Year, y = N, color = as.factor(Sim))) +
+  geom_line(size = 1.25, alpha = 0.5) + theme_bw() + theme(legend.position = "none")
+sim.plot
+```
