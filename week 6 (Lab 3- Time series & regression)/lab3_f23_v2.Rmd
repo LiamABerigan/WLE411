@@ -72,7 +72,7 @@ We've talked about linear regression and its principles at least once already th
   Y_{i}=a + bX_{i}
 \end{equation}
 
-where $Y_i$ is the response or dependent variable, $X_i$ is the predictor or independent variable, *a* provides the model intercept, or the expected value of $Y$ when $X=0$, and *b* gives the slope coefficient, or the effect of a 1-unit change in the predictor on the expected response.  Now, lets take another look at our now familiar continuous exponential growth model.
+where $Y_i$ is the response or dependent variable, $X_i$ is the predictor or independent variable, *a* provides the model intercept, or the expected value of $Y$ when $X=0$, and *b* gives the slope coefficient, or the effect of a 1-unit change in the predictor on the expected response.  Now, let's take another look at our now familiar continuous exponential growth model.
 
 \begin{equation}
   \label{eq:2}
@@ -270,9 +270,10 @@ sagegrouse
 ```
 
 
-5. And lastly, we can use ggplot, which you were exposed to in lab 2, to graph our counts and predicted trend, which should look pretty darn similar to your excel-based figure.
+5. And lastly, we can use ggplot, which you were exposed to in Lab 2, to graph our counts and predicted trend, which should look pretty darn similar to your excel-based figure.
 
 ```{r eval=TRUE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE, results='markup'}
+library(ggplot2)
 
 ggplot(data=sagegrouse, aes(x=year, y=males)) +
   geom_point(size=2)+
