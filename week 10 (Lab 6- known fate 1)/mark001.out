@@ -1,0 +1,222 @@
+
+   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Mar 2018     9-Nov-2023 13:21:50    Page  001
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   This version was compiled by GCC version 7.2.0 using the options: 
+     -cpp -iprefix C:/Program Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/
+     mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.2.0/ -D_MT -D_REENTRANT
+     -U_REENTRANT -D IEEE -D DBLEPRECISION -m64 -mtune=core2 -march=nocona -mthreads
+     -O2 -fimplicit-none -fbounds-check -funroll-loops -ftree-vectorize
+     -ffpe-summary=invalid,zero,overflow,underflow -fno-unsafe-math-optimizations
+     -frounding-math -fsignaling-nans -fopenmp.
+
+   This problem will use 11 of 12 possible threads.
+
+
+  INPUT --- proc title ;
+
+   CPU Time for the last procedure was 0.01 seconds.     
+
+
+  INPUT --- proc chmatrix occasions= 8 groups= 12 etype= Known Nodes= 
+  INPUT --- 101 ICMeans NoHist hist= 90  ;
+
+  INPUT ---    time interval 1 1 1 1 1 1 1 1 ;
+
+  INPUT ---    glabel(1)=Study.AreaA.AgeClassAdult.SexFemale;
+
+  INPUT ---    glabel(2)=Study.AreaB.AgeClassAdult.SexFemale;
+
+  INPUT ---    glabel(3)=Study.AreaC.AgeClassAdult.SexFemale;
+
+  INPUT ---    glabel(4)=Study.AreaA.AgeClassJuvenile.SexFemale;
+
+  INPUT ---    glabel(5)=Study.AreaB.AgeClassJuvenile.SexFemale;
+
+  INPUT ---    glabel(6)=Study.AreaC.AgeClassJuvenile.SexFemale;
+
+  INPUT ---    glabel(7)=Study.AreaA.AgeClassAdult.SexMale;
+
+  INPUT ---    glabel(8)=Study.AreaB.AgeClassAdult.SexMale;
+
+  INPUT ---    glabel(9)=Study.AreaC.AgeClassAdult.SexMale;
+
+  INPUT ---    glabel(10)=Study.AreaA.AgeClassJuvenile.SexMale;
+
+  INPUT ---    glabel(11)=Study.AreaB.AgeClassJuvenile.SexMale;
+
+  INPUT ---    glabel(12)=Study.AreaC.AgeClassJuvenile.SexMale;
+
+   * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Mar 2018     9-Nov-2023 13:21:50    Page  002
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+      Number of unique encounter histories read was 9.
+
+      Number of individual covariates read was 0.
+      Time interval lengths are all equal to 1.
+
+      Data type number is 4
+      Data type is Known Fate                                                                                          
+
+   CPU Time for the last procedure was 0.01 seconds.     
+
+
+  INPUT --- proc estimate link=Logit NOLOOP varest=2ndPart    ;
+
+
+  INPUT --- model={ S(~Study.Area) };
+
+  INPUT ---    group=1 S    rows=1 cols=8 Square ;
+  INPUT ---        1 1 1 1 1 1 1 1 ;
+
+  INPUT ---    group=2 S    rows=1 cols=8 Square ;
+  INPUT ---        2 2 2 2 2 2 2 2 ;
+
+  INPUT ---    group=3 S    rows=1 cols=8 Square ;
+  INPUT ---        3 3 3 3 3 3 3 3 ;
+
+  INPUT ---    group=4 S    rows=1 cols=8 Square ;
+  INPUT ---        1 1 1 1 1 1 1 1 ;
+
+  INPUT ---    group=5 S    rows=1 cols=8 Square ;
+  INPUT ---        2 2 2 2 2 2 2 2 ;
+
+  INPUT ---    group=6 S    rows=1 cols=8 Square ;
+  INPUT ---        3 3 3 3 3 3 3 3 ;
+
+  INPUT ---    group=7 S    rows=1 cols=8 Square ;
+  INPUT ---        1 1 1 1 1 1 1 1 ;
+
+  INPUT ---    group=8 S    rows=1 cols=8 Square ;
+  INPUT ---        2 2 2 2 2 2 2 2 ;
+
+  INPUT ---    group=9 S    rows=1 cols=8 Square ;
+  INPUT ---        3 3 3 3 3 3 3 3 ;
+
+  INPUT ---    group=10 S    rows=1 cols=8 Square ;
+  INPUT ---        1 1 1 1 1 1 1 1 ;
+
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Mar 2018     9-Nov-2023 13:21:50    Page  003
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---    group=11 S    rows=1 cols=8 Square ;
+  INPUT ---        2 2 2 2 2 2 2 2 ;
+
+  INPUT ---    group=12 S    rows=1 cols=8 Square ;
+  INPUT ---        3 3 3 3 3 3 3 3 ;
+
+  INPUT ---    design matrix constraints=3 covariates=3;
+  INPUT ---        1 0 0;
+  INPUT ---        1 1 0;
+  INPUT ---        1 0 1;
+  INPUT ---       blabel(1)=S:(Intercept);
+  INPUT ---       blabel(2)=S:Study.AreaB;
+  INPUT ---       blabel(3)=S:Study.AreaC;
+  INPUT ---       rlabel(1)=S gAAdultFemale a1 t2;
+  INPUT ---       rlabel(2)=S gBAdultFemale a1 t2;
+  INPUT ---       rlabel(3)=S gCAdultFemale a1 t2;
+
+ Link Function Used is LOGIT        
+
+ Variance Estimation Procedure Used is 2ndPart 
+ -2logL(saturated) = 965.15883     
+ Effective Sample Size = 1626
+
+ Number of function evaluations was 17 for 3 parameters.
+ Time for numerical optimization was 0.01 seconds.     
+ -2logL { S(~Study.Area) } = 1101.3317     
+ Penalty { S(~Study.Area) } = 0.0000000     
+ Gradient { S(~Study.Area) }:
+ -0.4802003E-05   0.000000     -0.1333861E-04
+ Maximum ABS(G) { S(~Study.Area) } = 0.1333861E-04 
+ S Vector { S(~Study.Area) }:
+   203.3313      59.29317      10.47715    
+ Time to compute number of parameters was 0.01 seconds.     
+ Ratio Threshold = 50.000000       Max Gap (2/3) = 5.6592861       Next Max Gap (1/2) = 3.4292531     
+ Gap Method for Num. of Estimated Parameters { S(~Study.Area) } = 3          
+ Threshold { S(~Study.Area) } = 0.2667722E-04                 
+ Numerical Threshold Method for Num. of Estimated Parameters { S(~Study.Area) } = 3          
+ Number of Estimated Parameters { S(~Study.Area) } = 3          
+ DEVIANCE { S(~Study.Area) } = 136.17286                     
+ DEVIANCE Degrees of Freedom { S(~Study.Area) } = 93            
+ c-hat { S(~Study.Area) } = 1.4642243                     
+ AIC { S(~Study.Area) } = 1107.3317                  
+ AICc { S(~Study.Area) } = 1107.3465                    
+ BIC { S(~Study.Area) } = 1123.5133                    
+ Pearson Chisquare { S(~Study.Area) } = 135.04650                  
+ Possible Encounter Histories { S(~Study.Area) } = 192             
+ Pearson Chisquare df { S(~Study.Area) } = 177        
+ Pearson chat { S(~Study.Area) } = 0.7629746                  
+ Sum(Observed/Expected) { S(~Study.Area) } = 117.29709                  
+ Fletcher chat { S(~Study.Area) } = 1.2488896                  
+
+
+                      LOGIT Link Function Parameters of { S(~Study.Area) }
+                                                              95% Confidence Interval
+ Parameter                    Beta         Standard Error      Lower           Upper
+ -------------------------  --------------  --------------  --------------  --------------
+    1:S:(Intercept)          2.1775885       0.1668318       1.8505981       2.5045789    
+    2:S:Study.AreaB          0.0094836       0.2113884      -0.4048376       0.4238049    
+    3:S:Study.AreaC         -0.1439566       0.2114506      -0.5583997       0.2704866    
+
+
+                      Real Function Parameters of { S(~Study.Area) }
+                                                               95% Confidence Interval
+  Parameter                  Estimate       Standard Error      Lower           Upper
+ --------------------------  --------------  --------------  --------------  --------------
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Mar 2018     9-Nov-2023 13:21:50    Page  004
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+     1:S gAAdultFemale a1 t   0.8982188       0.0152521       0.8641973       0.9244622                          
+     2:S gBAdultFemale a1 t   0.8990826       0.0117786       0.8735405       0.9199385                          
+     3:S gCAdultFemale a1 t   0.8842832       0.0132940       0.8555726       0.9079009                          
+
+
+                     Estimates of Derived Parameters
+
+                Survival Estimates of { S(~Study.Area) }
+
+       Pr. Surviving
+        Duration of                   95% Confidence Interval
+ Group     Study      Standard Error     Lower          Upper     
+ ----- -------------- -------------- -------------- --------------
+   1    0.4236988      0.0575563      0.3165638      0.5385217    
+   2    0.4269693      0.0447488      0.3423801      0.5160572    
+   3    0.3738791      0.0449660      0.2906769      0.4652752    
+   4    0.4236988      0.0575563      0.3165638      0.5385217    
+   5    0.4269693      0.0447488      0.3423801      0.5160572    
+   6    0.3738791      0.0449660      0.2906769      0.4652752    
+   7    0.4236988      0.0575563      0.3165638      0.5385217    
+   8    0.4269693      0.0447488      0.3423801      0.5160572    
+   9    0.3738791      0.0449660      0.2906769      0.4652752    
+  10    0.4236988      0.0575563      0.3165638      0.5385217    
+  11    0.4269693      0.0447488      0.3423801      0.5160572    
+  12    0.3738791      0.0449660      0.2906769      0.4652752    
+
+   CPU Time for the last procedure was 0.01 seconds.     
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Mar 2018     9-Nov-2023 13:21:50    Page  005
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc stop;
+
+     CPU Time in minutes for this job was 0.00
+
+     Time Start = 13:21:50.533   Time End = 13:21:50.565
+
+     Wall Clock Time in minutes for this job was 0.00
+
+
+          E X E C U T I O N   S U C C E S S F U L 

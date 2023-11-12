@@ -1,0 +1,146 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(renv)
+library(tidyverse)
+library(here)
+library(amt)
+library(sf)
+library(terra)
+library(readxl)
+library(AICcmodavg)
+library(furrr)
+
+source("ssf_td_3.R")
+source("ssf_td_2.R")
+```
+
+Derive the possible iterations of time difference and season
+```{r}
+# Order 3
+iterations_3 <- expand_grid(time_difference = 1:14*24, selected_season = c("Summer (early)", "Summer (late)", "Migratory (spring)", "Migratory (fall)", "Winter"))
+
+# Order 2
+## excludes late summer, as there are only two order 2 terminations in that category
+iterations_2 <- expand_grid(time_difference = 1:14*24, selected_season = c("Summer (early)", "Migratory (spring)", "Migratory (fall)", "Winter")) 
+```
+
+# Run the time difference scripts
+
+3rd order selection working in all seasons, 1 through 14 days
+```{r}
+plan(multisession, workers = 3)
+
+ssf_td_2_results <- future_pmap(iterations_2, ssf_td_2, 
+                                .options = furrr_options(seed = 8), 
+                                .progress = TRUE)
+
+ssf_td_3_results <- future_pmap(iterations_3, ssf_td_3, 
+                                .options = furrr_options(seed = 8), 
+                                .progress = TRUE)
+
+plan(sequential)
+
+# save.image(here("ssf_time_difference_simulations", "simulation_output.Rdata"))
+base::load("D:/OneDrive - University of Maine System/MaineAnalysis/Projects/amwo-fac-habitat/ssf_time_difference_simulations/simulation_output.Rdata")
+```
+
+Attach results to dataframe
+```{r}
+iterations_2 <- iterations_2 %>% 
+  mutate(sl_2 = NA,
+         ta_2 = NA,
+         #m_2 = NA,
+         aic_2 = NA
+         )
+
+iterations_3 <- iterations_3 %>%
+  mutate(sl_3 = NA,
+         ta_3 = NA,
+         #m_3 = NA,
+         aic_3 = NA
+         )
+
+for (i in 1:nrow(iterations_2)){
+  iterations_2$sl_2[i] <- list(ssf_td_2_results[[i]]$sl)
+  iterations_2$ta_2[i] <- list(ssf_td_2_results[[i]]$ta)
+  #iterations_2$m_2[i] <- list(ssf_td_2_results[[i]]$m)
+  iterations_2$aic_2[i] <- list(ssf_td_2_results[[i]]$aic)
+}
+
+for(i in 1:nrow(iterations_3)){
+  iterations_3$sl_3[i] <- list(ssf_td_3_results[[i]]$sl)
+  iterations_3$ta_3[i] <- list(ssf_td_3_results[[i]]$ta)
+  #iterations_3$m_3[i] <- list(ssf_td_3_results[[i]]$m)
+  iterations_3$aic_3[i] <- list(ssf_td_3_results[[i]]$aic)
+}
+
+```
+
+Merge results and plot
+```{r}
+sl_2_df <- iterations_2 %>% 
+  dplyr::select(time_difference, selected_season, sl_2) %>% 
+  mutate(time_difference = as.factor(time_difference)) %>% 
+  unnest(cols = sl_2)
+
+sl_3_df <- iterations_3 %>% 
+  dplyr::select(time_difference, selected_season, sl_3) %>% 
+  mutate(time_difference = as.factor(time_difference)) %>% 
+  unnest(cols = sl_3)
+
+ta_2_df <- iterations_2 %>% 
+  dplyr::select(time_difference, selected_season, ta_2) %>% 
+  mutate(time_difference = as.factor(time_difference)) %>% 
+  unnest(cols = ta_2)
+
+ta_3_df <- iterations_3 %>% 
+  dplyr::select(time_difference, selected_season, ta_3) %>% 
+  mutate(time_difference = as.factor(time_difference)) %>% 
+  unnest(cols = ta_3)
+```
+
+```{r}
+ggplot(sl_2_df, mapping = aes(x = sl_2, color = time_difference)) +
+  geom_density() +
+  theme_bw() +
+  #xlim(c(0, 1000)) +
+  facet_wrap(vars(selected_season)) +
+  scale_x_continuous(trans='log2')
+
+ggsave("sl_2.png",
+       width = 16, height = 8)
+
+ggplot(sl_3_df, mapping = aes(x = sl_3, color = time_difference)) +
+  geom_density() +
+  theme_bw() +
+  xlim(c(0, 1000)) +
+  facet_wrap(vars(selected_season))  +
+  scale_x_continuous(trans='log2')
+
+ggsave("sl_3.png",
+       width = 16, height = 8)
+```
+
+```{r}
+ggplot(ta_2_df, mapping = aes(x = ta_2, color = time_difference)) +
+  geom_density() +
+  theme_bw() +
+  #xlim(c(0, 1000)) +
+  facet_wrap(vars(selected_season))
+
+ggsave("ta_2.png",
+       width = 16, height = 8)
+
+ggplot(ta_3_df, mapping = aes(x = ta_3, color = time_difference)) +
+  geom_density() +
+  theme_bw() +
+  #xlim(c(0, 1000)) +
+  facet_wrap(vars(selected_season))
+
+ggsave("ta_3.png",
+       width = 16, height = 8)
+```
