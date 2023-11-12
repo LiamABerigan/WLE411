@@ -1,0 +1,64 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+```{r}
+set.seed(8)
+precip_dist <- tibble(data = rnorm(1000, mean = 3, sd = 0.5))
+temp_dist <- tibble(data = rnorm(1000, mean = 45, sd = 20))
+
+precip_dist$scaled <- scale(precip_dist$data)
+temp_dist$scaled <- scale(temp_dist$data)
+```
+
+
+```{r}
+precip_dist %>% 
+  ggplot(aes(data)) +
+  geom_histogram(aes(y = after_stat(count / sum(count))), color = "black", fill = "skyblue", alpha = 0.3) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  ylab("Percent of observations") +
+  xlab("Inches of monthly precipitation")
+
+ggsave(here("week 12 (Lab 7- known fate 2)", "precip_dist.png"), width = 3, height = 3)
+
+temp_dist %>% 
+  ggplot(aes(data)) +
+  geom_histogram(aes(y = after_stat(count / sum(count))), color = "black", fill = "red", alpha = 0.3) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  ylab("Percent of observations") +
+  xlab("Monthly temp (Fahrenheit)")
+
+ggsave(here("week 12 (Lab 7- known fate 2)", "temp_dist.png"), width = 3, height = 3)
+```
+
+```{r}
+precip_dist %>% 
+  ggplot(aes(scaled)) +
+  geom_histogram(aes(y = after_stat(count / sum(count))), color = "black", fill = "skyblue", alpha = 0.3) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  ylab("Percent of observations") +
+  xlab("Z-score")
+
+ggsave(here("week 12 (Lab 7- known fate 2)", "precip_zscore.png"), width = 3, height = 3)
+
+temp_dist %>% 
+  ggplot(aes(scaled)) +
+  geom_histogram(aes(y = after_stat(count / sum(count))), color = "black", fill = "red", alpha = 0.3) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  ylab("Percent of observations") +
+  xlab("Z-score")
+
+ggsave(here("week 12 (Lab 7- known fate 2)", "temp_zscore.png"), width = 3, height = 3)
+```
+
