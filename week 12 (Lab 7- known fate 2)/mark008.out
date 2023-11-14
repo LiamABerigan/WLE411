@@ -1,6 +1,6 @@
 
    Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  001
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  001
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
    This version was compiled by GCC version 7.2.0 using the options: 
@@ -51,7 +51,7 @@
    * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  002
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  002
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -63,7 +63,7 @@
       Data type number is 4
       Data type is Known Fate                                                                                          
 
-   CPU Time for the last procedure was 0.01 seconds.     
+   CPU Time for the last procedure was 0.02 seconds.     
 
 
   INPUT --- proc estimate link=Logit NOLOOP varest=2ndPart    ;
@@ -103,7 +103,7 @@
 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  003
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  003
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---    group=11 S    rows=1 cols=8 Square ;
@@ -130,18 +130,18 @@
  Effective Sample Size = 1626
 
  Number of function evaluations was 18 for 3 parameters.
- Time for numerical optimization was 0.02 seconds.     
+ Time for numerical optimization was 0.01 seconds.     
  -2logL { S(~Study.Area) } = 1101.3317     
  Penalty { S(~Study.Area) } = 0.0000000     
  Gradient { S(~Study.Area) }:
-  0.9604006E-05  0.1511544E-04   0.000000    
+  0.4802003E-05  0.1511544E-04   0.000000    
  Maximum ABS(G) { S(~Study.Area) } = 0.1511544E-04 
  S Vector { S(~Study.Area) }:
-   203.3313      59.29316      10.47714    
+   203.3313      59.29318      10.47715    
  Time to compute number of parameters was 0.01 seconds.     
- Ratio Threshold = 50.000000       Max Gap (2/3) = 5.6592869       Next Max Gap (1/2) = 3.4292537     
+ Ratio Threshold = 50.000000       Max Gap (2/3) = 5.6592844       Next Max Gap (1/2) = 3.4292527     
  Gap Method for Num. of Estimated Parameters { S(~Study.Area) } = 3          
- Threshold { S(~Study.Area) } = 0.3023087E-04                 
+ Threshold { S(~Study.Area) } = 0.3023088E-04                 
  Numerical Threshold Method for Num. of Estimated Parameters { S(~Study.Area) } = 3          
  Number of Estimated Parameters { S(~Study.Area) } = 3          
  DEVIANCE { S(~Study.Area) } = 136.17286                     
@@ -162,9 +162,9 @@
                                                               95% Confidence Interval
  Parameter                    Beta         Standard Error      Lower           Upper
  -------------------------  --------------  --------------  --------------  --------------
-    1:S:(Intercept)          2.1775885       0.1668318       1.8505981       2.5045789    
-    2:S:Study.AreaB          0.0094838       0.2113884      -0.4048376       0.4238051    
-    3:S:Study.AreaC         -0.1439564       0.2114506      -0.5583996       0.2704868    
+    1:S:(Intercept)          2.1775886       0.1668318       1.8505983       2.5045790    
+    2:S:Study.AreaB          0.0094835       0.2113883      -0.4048376       0.4238047    
+    3:S:Study.AreaC         -0.1439567       0.2114506      -0.5583998       0.2704864    
 
 
                       Real Function Parameters of { S(~Study.Area) }
@@ -173,12 +173,12 @@
  --------------------------  --------------  --------------  --------------  --------------
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  004
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  004
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
      1:S gAAdultFemale a1 t   0.8982188       0.0152521       0.8641973       0.9244622                          
      2:S gBAdultFemale a1 t   0.8990826       0.0117786       0.8735405       0.9199385                          
-     3:S gCAdultFemale a1 t   0.8842833       0.0132940       0.8555726       0.9079009                          
+     3:S gCAdultFemale a1 t   0.8842832       0.0132940       0.8555726       0.9079009                          
 
 
                      Estimates of Derived Parameters
@@ -189,23 +189,23 @@
         Duration of                   95% Confidence Interval
  Group     Study      Standard Error     Lower          Upper     
  ----- -------------- -------------- -------------- --------------
-   1    0.4236988      0.0575564      0.3165638      0.5385217    
+   1    0.4236988      0.0575563      0.3165639      0.5385218    
    2    0.4269693      0.0447488      0.3423802      0.5160572    
    3    0.3738791      0.0449660      0.2906769      0.4652752    
-   4    0.4236988      0.0575564      0.3165638      0.5385217    
+   4    0.4236988      0.0575563      0.3165639      0.5385218    
    5    0.4269693      0.0447488      0.3423802      0.5160572    
    6    0.3738791      0.0449660      0.2906769      0.4652752    
-   7    0.4236988      0.0575564      0.3165638      0.5385217    
+   7    0.4236988      0.0575563      0.3165639      0.5385218    
    8    0.4269693      0.0447488      0.3423802      0.5160572    
    9    0.3738791      0.0449660      0.2906769      0.4652752    
-  10    0.4236988      0.0575564      0.3165638      0.5385217    
+  10    0.4236988      0.0575563      0.3165639      0.5385218    
   11    0.4269693      0.0447488      0.3423802      0.5160572    
   12    0.3738791      0.0449660      0.2906769      0.4652752    
 
-   CPU Time for the last procedure was 0.02 seconds.     
+   CPU Time for the last procedure was 0.01 seconds.     
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  005
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  005
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -214,7 +214,7 @@
 
      CPU Time in minutes for this job was 0.00
 
-     Time Start = 14:35:51.521   Time End = 14:35:51.543
+     Time Start = 16:53:50.115   Time End = 16:53:50.132
 
      Wall Clock Time in minutes for this job was 0.00
 

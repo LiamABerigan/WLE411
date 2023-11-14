@@ -1,6 +1,6 @@
 
    Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:50    Page  001
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  001
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
    This version was compiled by GCC version 7.2.0 using the options: 
@@ -51,7 +51,7 @@
    * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:50    Page  002
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  002
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -103,7 +103,7 @@
 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:50    Page  003
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  003
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---    group=11 S    rows=1 cols=8 Square ;
@@ -126,18 +126,20 @@
  -2logL(saturated) = 965.15883     
  Effective Sample Size = 1626
 
- Number of function evaluations was 14 for 2 parameters.
+   * *  WARNING  * *   Error number 0 from VA09AD optimization routine. 
+
+ Number of function evaluations was 13 for 2 parameters.
  Time for numerical optimization was 0.01 seconds.     
  -2logL { S(~Sex) } = 1101.9402     
  Penalty { S(~Sex) } = 0.0000000     
  Gradient { S(~Sex) }:
- -0.4817687E-05   0.000000    
- Maximum ABS(G) { S(~Sex) } = 0.4817687E-05 
+   0.000000       0.000000    
+ Maximum ABS(G) { S(~Sex) } = 0.0000000     
  S Vector { S(~Sex) }:
-   210.0168      28.24669    
+   210.0168      28.24666    
  Time to compute number of parameters was 0.01 seconds.     
  Gap Method for Num. of Estimated Parameters { S(~Sex) } = 2          
- Threshold { S(~Sex) } = 0.9635374E-05                 
+ Threshold { S(~Sex) } = 0.0000000                     
  Numerical Threshold Method for Num. of Estimated Parameters { S(~Sex) } = 2          
  Number of Estimated Parameters { S(~Sex) } = 2          
  DEVIANCE { S(~Sex) } = 136.78133                     
@@ -158,19 +160,19 @@
                                                               95% Confidence Interval
  Parameter                    Beta         Standard Error      Lower           Upper
  -------------------------  --------------  --------------  --------------  --------------
-    1:S:(Intercept)          2.1672437       0.1187750       1.9344447       2.4000427    
-    2:S:SexMale             -0.0732804       0.1614199      -0.3896635       0.2431027    
+    1:S:(Intercept)          2.1672436       0.1187750       1.9344445       2.4000426    
+    2:S:SexMale             -0.0732802       0.1614200      -0.3896635       0.2431031    
 
 
                          Real Function Parameters of { S(~Sex) }
                                                                95% Confidence Interval
   Parameter                  Estimate       Standard Error      Lower           Upper
  --------------------------  --------------  --------------  --------------  --------------
-     1:S gAAdultFemale a1 t   0.8972692       0.0109483       0.8737406       0.9168306                          
+     1:S gAAdultFemale a1 t   0.8972692       0.0109484       0.8737405       0.9168306                          
      2:S gAAdultMale a1 t2    0.8903151       0.0106747       0.8675782       0.9095550                          
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:50    Page  004
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  004
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -183,23 +185,23 @@
         Duration of                   95% Confidence Interval
  Group     Study      Standard Error     Lower          Upper     
  ----- -------------- -------------- -------------- --------------
-   1    0.4201283      0.0410107      0.3424962      0.5019242    
-   2    0.4201283      0.0410107      0.3424962      0.5019242    
-   3    0.4201283      0.0410107      0.3424962      0.5019242    
-   4    0.4201283      0.0410107      0.3424962      0.5019242    
-   5    0.4201283      0.0410107      0.3424962      0.5019242    
-   6    0.4201283      0.0410107      0.3424962      0.5019242    
-   7    0.3947751      0.0378661      0.3234609      0.4708690    
-   8    0.3947751      0.0378661      0.3234609      0.4708690    
-   9    0.3947751      0.0378661      0.3234609      0.4708690    
-  10    0.3947751      0.0378661      0.3234609      0.4708690    
-  11    0.3947751      0.0378661      0.3234609      0.4708690    
-  12    0.3947751      0.0378661      0.3234609      0.4708690    
+   1    0.4201283      0.0410107      0.3424961      0.5019242    
+   2    0.4201283      0.0410107      0.3424961      0.5019242    
+   3    0.4201283      0.0410107      0.3424961      0.5019242    
+   4    0.4201283      0.0410107      0.3424961      0.5019242    
+   5    0.4201283      0.0410107      0.3424961      0.5019242    
+   6    0.4201283      0.0410107      0.3424961      0.5019242    
+   7    0.3947751      0.0378661      0.3234610      0.4708691    
+   8    0.3947751      0.0378661      0.3234610      0.4708691    
+   9    0.3947751      0.0378661      0.3234610      0.4708691    
+  10    0.3947751      0.0378661      0.3234610      0.4708691    
+  11    0.3947751      0.0378661      0.3234610      0.4708691    
+  12    0.3947751      0.0378661      0.3234610      0.4708691    
 
    CPU Time for the last procedure was 0.01 seconds.     
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:50    Page  005
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  005
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -208,7 +210,7 @@
 
      CPU Time in minutes for this job was 0.00
 
-     Time Start = 14:35:50.942   Time End = 14:35:50.960
+     Time Start = 16:53:49.713   Time End = 16:53:49.728
 
      Wall Clock Time in minutes for this job was 0.00
 

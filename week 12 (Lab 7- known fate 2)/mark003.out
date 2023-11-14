@@ -1,6 +1,6 @@
 
    Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:49    Page  001
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:48    Page  001
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
    This version was compiled by GCC version 7.2.0 using the options: 
@@ -51,7 +51,7 @@
    * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:49    Page  002
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:48    Page  002
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -103,7 +103,7 @@
 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:49    Page  003
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:48    Page  003
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---    group=11 S    rows=1 cols=8 Square ;
@@ -154,7 +154,7 @@
   INPUT ---       rlabel(14)=S gAJuvenileFemale a6 t7;
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:49    Page  004
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:48    Page  004
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---       rlabel(15)=S gAJuvenileFemale a7 t8;
@@ -166,21 +166,21 @@
  -2logL(saturated) = 965.15883     
  Effective Sample Size = 1626
 
- Number of function evaluations was 29 for 9 parameters.
- Time for numerical optimization was 0.03 seconds.     
+ Number of function evaluations was 30 for 9 parameters.
+ Time for numerical optimization was 0.02 seconds.     
  -2logL { S(~time + AgeClass) } = 1070.3498     
  Penalty { S(~time + AgeClass) } = 0.0000000     
  Gradient { S(~time + AgeClass) }:
-  0.7034943E-04  0.1611339E-04 -0.1334099E-04 -0.1436015E-04  0.7398629E-05
-  0.7323082E-05  0.2255335E-04 -0.7516696E-05  0.2564950E-04
- Maximum ABS(G) { S(~time + AgeClass) } = 0.7034943E-04 
+   0.000000       0.000000       0.000000       0.000000       0.000000    
+   0.000000       0.000000       0.000000      0.1282475E-04
+ Maximum ABS(G) { S(~time + AgeClass) } = 0.1282475E-04 
  S Vector { S(~time + AgeClass) }:
-   227.2110      28.74874      27.72037      23.69552      19.73304    
-   16.49130      14.53882      12.67424      1.717294    
+   227.2111      28.74875      27.72038      23.69553      19.73306    
+   16.49131      14.53884      12.67427      1.717302    
  Time to compute number of parameters was 0.01 seconds.     
- Ratio Threshold = 50.000000       Max Gap (1/2) = 7.9033401       Next Max Gap (1/2) = 7.9033401     
+ Ratio Threshold = 50.000000       Max Gap (1/2) = 7.9033377       Next Max Gap (1/2) = 7.9033377     
  Gap Method for Num. of Estimated Parameters { S(~time + AgeClass) } = 9          
- Threshold { S(~time + AgeClass) } = 0.1406989E-03                 
+ Threshold { S(~time + AgeClass) } = 0.2564950E-04                 
  Numerical Threshold Method for Num. of Estimated Parameters { S(~time + AgeClass) } = 9          
  Number of Estimated Parameters { S(~time + AgeClass) } = 9          
  DEVIANCE { S(~time + AgeClass) } = 105.19097                     
@@ -189,53 +189,53 @@
  AIC { S(~time + AgeClass) } = 1088.3498                  
  AICc { S(~time + AgeClass) } = 1088.4612                    
  BIC { S(~time + AgeClass) } = 1136.8947                    
- Pearson Chisquare { S(~time + AgeClass) } = 95.840506                  
+ Pearson Chisquare { S(~time + AgeClass) } = 95.840496                  
  Possible Encounter Histories { S(~time + AgeClass) } = 192             
  Pearson Chisquare df { S(~time + AgeClass) } = 171        
- Pearson chat { S(~time + AgeClass) } = 0.5604708                  
- Sum(Observed/Expected) { S(~time + AgeClass) } = 107.51446                  
- Fletcher chat { S(~time + AgeClass) } = 1.0008923                  
+ Pearson chat { S(~time + AgeClass) } = 0.5604707                  
+ Sum(Observed/Expected) { S(~time + AgeClass) } = 107.51445                  
+ Fletcher chat { S(~time + AgeClass) } = 1.0008922                  
 
 
                    LOGIT Link Function Parameters of { S(~time + AgeClass) }
                                                               95% Confidence Interval
  Parameter                    Beta         Standard Error      Lower           Upper
  -------------------------  --------------  --------------  --------------  --------------
-    1:S:(Intercept)          2.9041995       0.2739953       2.3671687       3.4412303    
-    2:S:time3               -0.8939268       0.3164660      -1.5142001      -0.2736534    
-    3:S:time4               -0.1437521       0.3711016      -0.8711113       0.5836071    
-    4:S:time5               -0.0625787       0.3850656      -0.8173073       0.6921499    
-    5:S:time6               -1.0623808       0.3249188      -1.6992217      -0.4255398    
-    6:S:time7               -1.0836566       0.3342960      -1.7388769      -0.4284363    
-    7:S:time8               -1.0296923       0.3494457      -1.7146059      -0.3447787    
-    8:S:time9               -1.0299863       0.3625040      -1.7404942      -0.3194784    
-    9:S:AgeClassJuvenile    -0.1897925       0.1634193      -0.5100943       0.1305093    
+    1:S:(Intercept)          2.9041996       0.2739948       2.3671698       3.4412294    
+    2:S:time3               -0.8939272       0.3164655      -1.5141996      -0.2736548    
+    3:S:time4               -0.1437524       0.3711007      -0.8711098       0.5836050    
+    4:S:time5               -0.0625791       0.3850648      -0.8173061       0.6921479    
+    5:S:time6               -1.0623812       0.3249184      -1.6992212      -0.4255413    
+    6:S:time7               -1.0836572       0.3342956      -1.7388766      -0.4284379    
+    7:S:time8               -1.0296934       0.3494453      -1.7146061      -0.3447807    
+    8:S:time9               -1.0299865       0.3625036      -1.7404936      -0.3194794    
+    9:S:AgeClassJuvenile    -0.1897923       0.1634193      -0.5100940       0.1305095    
 
 
                    Real Function Parameters of { S(~time + AgeClass) }
                                                                95% Confidence Interval
   Parameter                  Estimate       Standard Error      Lower           Upper
  --------------------------  --------------  --------------  --------------  --------------
-     1:S gAAdultFemale a1 t   0.9480536       0.0134937       0.9142892       0.9689685                          
+     1:S gAAdultFemale a1 t   0.9480536       0.0134937       0.9142893       0.9689685                          
      2:S gAAdultFemale a2 t   0.8818714       0.0213947       0.8330973       0.9177986                          
      3:S gAAdultFemale a3 t   0.9405007       0.0158051       0.9008643       0.9649070                          
      4:S gAAdultFemale a4 t   0.9448839       0.0156631       0.9048341       0.9686628                          
-     5:S gAAdultFemale a5 t   0.8631637       0.0256936       0.8046239       0.9062079                          
-     6:S gAAdultFemale a6 t   0.8606313       0.0277662       0.7968660       0.9067231                          
+     5:S gAAdultFemale a5 t   0.8631636       0.0256936       0.8046239       0.9062079                          
+     6:S gAAdultFemale a6 t   0.8606312       0.0277662       0.7968659       0.9067231                          
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:49    Page  005
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  005
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
-     7:S gAAdultFemale a7 t   0.8669789       0.0290499       0.7991190       0.9143714                          
+     7:S gAAdultFemale a7 t   0.8669788       0.0290499       0.7991189       0.9143713                          
      8:S gAAdultFemale a8 t   0.8669450       0.0311943       0.7931755       0.9171510                          
-     9:S gAJuvenileFemale a   0.9378714       0.0155508       0.8994674       0.9622211                          
+     9:S gAJuvenileFemale a   0.9378715       0.0155507       0.8994676       0.9622211                          
     10:S gAJuvenileFemale a   0.8606237       0.0236852       0.8074402       0.9009208                          
-    11:S gAJuvenileFemale a   0.9289489       0.0182595       0.8837494       0.9574211                          
-    12:S gAJuvenileFemale a   0.9341236       0.0181506       0.8883219       0.9619457                          
+    11:S gAJuvenileFemale a   0.9289489       0.0182595       0.8837495       0.9574211                          
+    12:S gAJuvenileFemale a   0.9341236       0.0181506       0.8883220       0.9619456                          
     13:S gAJuvenileFemale a   0.8391647       0.0285095       0.7752174       0.8875586                          
-    14:S gAJuvenileFemale a   0.8362724       0.0308414       0.7666087       0.8881757                          
-    15:S gAJuvenileFemale a   0.8435278       0.0327235       0.7683075       0.8975828                          
+    14:S gAJuvenileFemale a   0.8362724       0.0308414       0.7666087       0.8881756                          
+    15:S gAJuvenileFemale a   0.8435277       0.0327235       0.7683074       0.8975827                          
     16:S gAJuvenileFemale a   0.8434890       0.0350467       0.7620753       0.9006753                          
 
 
@@ -247,23 +247,23 @@
         Duration of                   95% Confidence Interval
  Group     Study      Standard Error     Lower          Upper     
  ----- -------------- -------------- -------------- --------------
-   1    0.4148453      0.0424961      0.3346802      0.4997877    
-   2    0.4148453      0.0424961      0.3346802      0.4997877    
-   3    0.4148453      0.0424961      0.3346802      0.4997877    
-   4    0.3497250      0.0381500      0.2790769      0.4276485    
-   5    0.3497250      0.0381500      0.2790769      0.4276485    
-   6    0.3497250      0.0381500      0.2790769      0.4276485    
-   7    0.4148453      0.0424961      0.3346802      0.4997877    
-   8    0.4148453      0.0424961      0.3346802      0.4997877    
-   9    0.4148453      0.0424961      0.3346802      0.4997877    
-  10    0.3497250      0.0381500      0.2790769      0.4276485    
-  11    0.3497250      0.0381500      0.2790769      0.4276485    
-  12    0.3497250      0.0381500      0.2790769      0.4276485    
+   1    0.4148451      0.0424961      0.3346801      0.4997876    
+   2    0.4148451      0.0424961      0.3346801      0.4997876    
+   3    0.4148451      0.0424961      0.3346801      0.4997876    
+   4    0.3497249      0.0381500      0.2790769      0.4276484    
+   5    0.3497249      0.0381500      0.2790769      0.4276484    
+   6    0.3497249      0.0381500      0.2790769      0.4276484    
+   7    0.4148451      0.0424961      0.3346801      0.4997876    
+   8    0.4148451      0.0424961      0.3346801      0.4997876    
+   9    0.4148451      0.0424961      0.3346801      0.4997876    
+  10    0.3497249      0.0381500      0.2790769      0.4276484    
+  11    0.3497249      0.0381500      0.2790769      0.4276484    
+  12    0.3497249      0.0381500      0.2790769      0.4276484    
 
-   CPU Time for the last procedure was 0.03 seconds.     
+   CPU Time for the last procedure was 0.02 seconds.     
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:49    Page  006
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  006
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -272,7 +272,7 @@
 
      CPU Time in minutes for this job was 0.00
 
-     Time Start = 14:35:49.562   Time End = 14:35:49.626
+     Time Start = 16:53:48.943   Time End = 16:53:49.006
 
      Wall Clock Time in minutes for this job was 0.00
 

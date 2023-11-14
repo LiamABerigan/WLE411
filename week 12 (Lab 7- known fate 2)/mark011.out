@@ -1,6 +1,6 @@
 
    Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:53    Page  001
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:51    Page  001
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
    This version was compiled by GCC version 7.2.0 using the options: 
@@ -51,7 +51,7 @@
   INPUT ---    glabel(12)=Study.AreaC.AgeClassJuvenile.SexMale;
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:53    Page  002
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:51    Page  002
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -63,7 +63,7 @@
       Data type number is 4
       Data type is Known Fate                                                                                          
 
-   CPU Time for the last procedure was 0.02 seconds.     
+   CPU Time for the last procedure was 0.01 seconds.     
 
 
   INPUT --- proc estimate link=Logit NOLOOP varest=2ndPart    ;
@@ -103,7 +103,7 @@
 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:53    Page  003
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:51    Page  003
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---    group=11 S    rows=1 cols=8 Square ;
@@ -145,26 +145,26 @@
  -2logL(saturated) = 0.0000000     
  Effective Sample Size = 1626
 
- Number of function evaluations was 34 for 9 parameters.
- Time for numerical optimization was 0.03 seconds.     
+ Number of function evaluations was 31 for 9 parameters.
+ Time for numerical optimization was 0.01 seconds.     
  -2logL { S(~time + CS) } = 1071.1231     
  Penalty { S(~time + CS) } = 0.0000000     
  Gradient { S(~time + CS) }:
-  0.8020693E-05   0.000000     -0.1337225E-04 -0.1440152E-04   0.000000    
-   0.000000       0.000000       0.000000       0.000000    
- Maximum ABS(G) { S(~time + CS) } = 0.1440152E-04 
+ -0.3609313E-04   0.000000      0.1337227E-04   0.000000       0.000000    
+ -0.7332693E-05 -0.7524134E-05   0.000000       0.000000    
+ Maximum ABS(G) { S(~time + CS) } = 0.3609313E-04 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:53    Page  004
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:51    Page  004
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
  S Vector { S(~time + CS) }:
-   171.5580      27.97941      23.77088      19.78391      16.52991    
-   14.68087      13.17897      12.58366      1.721894    
- Time to compute number of parameters was 0.02 seconds.     
- Ratio Threshold = 50.000000       Max Gap (8/9) = 7.3080344       Next Max Gap (1/2) = 6.1315820     
+   171.5580      27.97940      23.77088      19.78391      16.52991    
+   14.68086      13.17896      12.58367      1.721896    
+ Time to compute number of parameters was 0.01 seconds.     
+ Ratio Threshold = 50.000000       Max Gap (8/9) = 7.3080301       Next Max Gap (1/2) = 6.1315830     
  Gap Method for Num. of Estimated Parameters { S(~time + CS) } = 9          
- Threshold { S(~time + CS) } = 0.2880305E-04                 
+ Threshold { S(~time + CS) } = 0.7218626E-04                 
  Numerical Threshold Method for Num. of Estimated Parameters { S(~time + CS) } = 9          
  Number of Estimated Parameters { S(~time + CS) } = 9          
  DEVIANCE { S(~time + CS) } = 1071.1231                     
@@ -173,22 +173,22 @@
  AIC { S(~time + CS) } = 1089.1231                  
  AICc { S(~time + CS) } = 1089.2345                    
  BIC { S(~time + CS) } = 1137.6680                    
- Pearson Chisquare { S(~time + CS) } = 2615.0343                  
+ Pearson Chisquare { S(~time + CS) } = 2615.0341                  
 
 
                       LOGIT Link Function Parameters of { S(~time + CS) }
                                                               95% Confidence Interval
  Parameter                    Beta         Standard Error      Lower           Upper
  -------------------------  --------------  --------------  --------------  --------------
-    1:S:(Intercept)          2.8048557       0.2576956       2.2997722       3.3099391    
-    2:S:time3               -0.8933403       0.3164119      -1.5135076      -0.2731730    
-    3:S:time4               -0.1410786       0.3710462      -0.8683292       0.5861721    
-    4:S:time5               -0.0595260       0.3850183      -0.8141618       0.6951098    
-    5:S:time6               -1.0596615       0.3248379      -1.6963439      -0.4229791    
-    6:S:time7               -1.0809270       0.3342133      -1.7359851      -0.4258688    
-    7:S:time8               -1.0279805       0.3493792      -1.7127637      -0.3431973    
-    8:S:time9               -1.0335676       0.3625450      -1.7441557      -0.3229794    
-    9:S:CS                   0.0622482       0.0815592      -0.0976078       0.2221043    
+    1:S:(Intercept)          2.8048544       0.2576955       2.2997712       3.3099376    
+    2:S:time3               -0.8933390       0.3164118      -1.5135062      -0.2731719    
+    3:S:time4               -0.1410770       0.3710462      -0.8683275       0.5861736    
+    4:S:time5               -0.0595247       0.3850180      -0.8141600       0.6951106    
+    5:S:time6               -1.0596603       0.3248378      -1.6963425      -0.4229782    
+    6:S:time7               -1.0809258       0.3342132      -1.7359837      -0.4258678    
+    7:S:time8               -1.0279794       0.3493791      -1.7127625      -0.3431963    
+    8:S:time9               -1.0335664       0.3625449      -1.7441545      -0.3229784    
+    9:S:CS                   0.0622483       0.0815592      -0.0976079       0.2221044    
 
 
                       Real Function Parameters of { S(~time + CS) }
@@ -200,17 +200,17 @@
                                                                95% Confidence Interval
   Parameter                  Estimate       Standard Error      Lower           Upper
  --------------------------  --------------  --------------  --------------  --------------
-     1:S gAAdultFemale a1 t   0.9427558       0.0139005       0.9085984       0.9646450                          
+     1:S gAAdultFemale a1 t   0.9427557       0.0139005       0.9085983       0.9646449                          
      2:S gAAdultFemale a2 t   0.8708100       0.0206842       0.8245921       0.9062348                          
      3:S gAAdultFemale a3 t   0.9346492       0.0163197       0.8944212       0.9602309                          
      4:S gAAdultFemale a4 t   0.9394573       0.0162838       0.8985130       0.9645349                          
      5:S gAAdultFemale a5 t   0.8509179       0.0251198       0.7947346       0.8937786                          
      6:S gAAdultFemale a6 t   0.8482001       0.0274338       0.7863296       0.8945577                          
      7:S gAAdultFemale a7 t   0.8548923       0.0292795       0.7876615       0.9034459                          
-     8:S gAAdultFemale a8 t   0.8541979       0.0317632       0.7804074       0.9061735                          
+     8:S gAAdultFemale a8 t   0.8541979       0.0317632       0.7804074       0.9061734                          
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:53    Page  005
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:51    Page  005
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -236,10 +236,10 @@
   11    0.3799305      0.0290867      0.3247915      0.4383532    
   12    0.3799305      0.0290867      0.3247915      0.4383532    
 
-   CPU Time for the last procedure was 0.05 seconds.     
+   CPU Time for the last procedure was 0.02 seconds.     
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:53    Page  006
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:51    Page  006
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -248,7 +248,7 @@
 
      CPU Time in minutes for this job was 0.00
 
-     Time Start = 14:35:53.701   Time End = 14:35:53.800
+     Time Start = 16:53:51.295   Time End = 16:53:51.397
 
      Wall Clock Time in minutes for this job was 0.00
 

@@ -1,6 +1,6 @@
 
    Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  001
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  001
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
    This version was compiled by GCC version 7.2.0 using the options: 
@@ -51,7 +51,7 @@
    * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  002
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  002
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -103,7 +103,7 @@
 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  003
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  003
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---    group=11 S    rows=1 cols=8 Square ;
@@ -122,18 +122,20 @@
  -2logL(saturated) = 965.15883     
  Effective Sample Size = 1626
 
+   * *  WARNING  * *   Error number 0 from VA09AD optimization routine. 
+
  Number of function evaluations was 9 for 1 parameters.
  Time for numerical optimization was 0.01 seconds.     
  -2logL { S(~1) } = 1102.1466     
  Penalty { S(~1) } = 0.0000000     
  Gradient { S(~1) }:
-  0.9755966E-05
- Maximum ABS(G) { S(~1) } = 0.9755966E-05 
+   0.000000    
+ Maximum ABS(G) { S(~1) } = 0.0000000     
  S Vector { S(~1) }:
    154.5935    
  Time to compute number of parameters was 0.01 seconds.     
  Gap Method for Num. of Estimated Parameters { S(~1) } = 1          
- Threshold { S(~1) } = 0.1951193E-04                 
+ Threshold { S(~1) } = 0.0000000                     
  Numerical Threshold Method for Num. of Estimated Parameters { S(~1) } = 1          
  Number of Estimated Parameters { S(~1) } = 1          
  DEVIANCE { S(~1) } = 136.98774                     
@@ -164,7 +166,7 @@
      1:S gAAdultFemale a1 t   0.8936039       0.0076467       0.8776601       0.9076884                          
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  004
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  004
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -193,7 +195,7 @@
    CPU Time for the last procedure was 0.01 seconds.     
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  005
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:50    Page  005
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -202,7 +204,7 @@
 
      CPU Time in minutes for this job was 0.00
 
-     Time Start = 14:35:51.831   Time End = 14:35:51.843
+     Time Start = 16:53:50.329   Time End = 16:53:50.341
 
      Wall Clock Time in minutes for this job was 0.00
 

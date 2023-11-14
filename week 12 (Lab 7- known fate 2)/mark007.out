@@ -1,6 +1,6 @@
 
    Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  001
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  001
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
    This version was compiled by GCC version 7.2.0 using the options: 
@@ -51,7 +51,7 @@
    * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  002
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  002
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -103,7 +103,7 @@
 
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  003
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  003
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
   INPUT ---    group=11 S    rows=1 cols=8 Square ;
@@ -126,18 +126,18 @@
  -2logL(saturated) = 965.15883     
  Effective Sample Size = 1626
 
- Number of function evaluations was 14 for 2 parameters.
+ Number of function evaluations was 13 for 2 parameters.
  Time for numerical optimization was 0.01 seconds.     
  -2logL { S(~AgeClass) } = 1100.9152     
  Penalty { S(~AgeClass) } = 0.0000000     
  Gradient { S(~AgeClass) }:
-  0.4731960E-05  0.1293928E-04
- Maximum ABS(G) { S(~AgeClass) } = 0.1293928E-04 
+ -0.9463920E-05   0.000000    
+ Maximum ABS(G) { S(~AgeClass) } = 0.9463920E-05 
  S Vector { S(~AgeClass) }:
-   212.6682      27.69994    
+   212.6682      27.69991    
  Time to compute number of parameters was 0.01 seconds.     
  Gap Method for Num. of Estimated Parameters { S(~AgeClass) } = 2          
- Threshold { S(~AgeClass) } = 0.2587855E-04                 
+ Threshold { S(~AgeClass) } = 0.1892784E-04                 
  Numerical Threshold Method for Num. of Estimated Parameters { S(~AgeClass) } = 2          
  Number of Estimated Parameters { S(~AgeClass) } = 2          
  DEVIANCE { S(~AgeClass) } = 135.75636                     
@@ -158,8 +158,8 @@
                                                               95% Confidence Interval
  Parameter                    Beta         Standard Error      Lower           Upper
  -------------------------  --------------  --------------  --------------  --------------
-    1:S:(Intercept)          2.2246235       0.1207492       1.9879551       2.4612919    
-    2:S:AgeClassJuvenile    -0.1792613       0.1619351      -0.4966540       0.1381314    
+    1:S:(Intercept)          2.2246235       0.1207492       1.9879550       2.4612920    
+    2:S:AgeClassJuvenile    -0.1792613       0.1619351      -0.4966542       0.1381316    
 
 
                        Real Function Parameters of { S(~AgeClass) }
@@ -170,7 +170,7 @@
      2:S gAJuvenileFemale a   0.8854782       0.0109419       0.8622229       0.9052396                          
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  004
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  004
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -183,15 +183,15 @@
         Duration of                   95% Confidence Interval
  Group     Study      Standard Error     Lower          Upper     
  ----- -------------- -------------- -------------- --------------
-   1    0.4398888      0.0414565      0.3609141      0.5220288    
-   2    0.4398888      0.0414565      0.3609141      0.5220288    
-   3    0.4398888      0.0414565      0.3609141      0.5220288    
+   1    0.4398888      0.0414565      0.3609141      0.5220289    
+   2    0.4398888      0.0414565      0.3609141      0.5220289    
+   3    0.4398888      0.0414565      0.3609141      0.5220289    
    4    0.3779400      0.0373617      0.3079376      0.4534295    
    5    0.3779400      0.0373617      0.3079376      0.4534295    
    6    0.3779400      0.0373617      0.3079376      0.4534295    
-   7    0.4398888      0.0414565      0.3609141      0.5220288    
-   8    0.4398888      0.0414565      0.3609141      0.5220288    
-   9    0.4398888      0.0414565      0.3609141      0.5220288    
+   7    0.4398888      0.0414565      0.3609141      0.5220289    
+   8    0.4398888      0.0414565      0.3609141      0.5220289    
+   9    0.4398888      0.0414565      0.3609141      0.5220289    
   10    0.3779400      0.0373617      0.3079376      0.4534295    
   11    0.3779400      0.0373617      0.3079376      0.4534295    
   12    0.3779400      0.0373617      0.3079376      0.4534295    
@@ -199,7 +199,7 @@
    CPU Time for the last procedure was 0.01 seconds.     
 
   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
-   gfortran(dble) Vers. 9.0 Mar 2018    26-Aug-2023 14:35:51    Page  005
+   gfortran(dble) Vers. 9.0 Mar 2018    13-Nov-2023 16:53:49    Page  005
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  
 
@@ -208,7 +208,7 @@
 
      CPU Time in minutes for this job was 0.00
 
-     Time Start = 14:35:51.226   Time End = 14:35:51.241
+     Time Start = 16:53:49.924   Time End = 16:53:49.940
 
      Wall Clock Time in minutes for this job was 0.00
 
