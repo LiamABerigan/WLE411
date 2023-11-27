@@ -247,6 +247,8 @@ For up to 3 points extra credit, complete your assessment of management alternat
 
 Your assignment for this lab is to answer the following questions, using what you’ve learned about stage-based population modelling in lecture, as well as materials contained in the text. Your answers should be well-supported based on specific results from your analyses.
 
+Ensure that you submit a Word document (with answers to questions 1-4) and an Excel spreadsheet for this lab. If you completed the extra credit portion of the lab, please also submit an R script showing your code from the extra credit section. If you did not complete the extra credit assignment you do not need to submit an R script.
+
 1. Are breeding populations of common eider increasing, declining, or stable? How do you know? WHY is it possible to tell this without actually counting eider ducks?
 
 2. Is there evidence to suggest that low survival of ducklings is a driver of these potential declines? What evidence does our modelling exercise provide us to support this answer?
