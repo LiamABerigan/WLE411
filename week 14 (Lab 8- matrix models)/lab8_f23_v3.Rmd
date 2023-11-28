@@ -166,7 +166,7 @@ The matrix above would be reflective of a pre-breeding census, whereas a post-br
 
 ![Census after birth pulse](census_date_2.png)
 
-$$\begin{bmatrix}0 & F_{1}S_{0} & F_{2}S_{0} & F_{3}S_{0}\\
+$$\begin{bmatrix}0 & F_{1}S_{1} & F_{2}S_{2} & F_{3}S_{3}\\
 S_{0} & 0 & 0 & 0\\
 0 & S_{1} & 0 & 0\\
 0 & 0 & S_{2} & S_{3}
